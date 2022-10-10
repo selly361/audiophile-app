@@ -13,4 +13,8 @@ export const GlobalStyle = createGlobalStyle`
     input, button {
         outline: none;
     }
+
+    a {
+        text-decoration: none;
+    }
 `
