@@ -1,7 +1,7 @@
 import { CartIcon, LogoIcon } from "../../../assets/shared/desktop";
 
 import NavItems from "../../shared/NavItems/NavItems";
-import { StyledHeader, NavContainer } from "header-styles";
+import { StyledHeader, NavContainer } from "./header-styles";
 
 
 
