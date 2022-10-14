@@ -10,7 +10,7 @@ const Header = () => {
     <StyledHeader>
       <NavContainer>
         <LogoIcon />
-          <NavItems />
+        {matchMedia('(max-width: 900px)').matches && <NavItems />}
         <CartIcon />
       </NavContainer>
     </StyledHeader>
