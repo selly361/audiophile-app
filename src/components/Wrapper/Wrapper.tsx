@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode } from 'react'
 
-import { GlobalStyle } from '../../global/GlobalStyles'
+import { GlobalStyle } from 'global/GlobalStyles'
 
 interface PropTypes  {
     children: ReactNode
