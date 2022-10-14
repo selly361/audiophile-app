@@ -1,24 +1,9 @@
 import { CartIcon, LogoIcon } from "../../../assets/shared/desktop";
 
 import NavItems from "../../shared/NavItems/NavItems";
-import React from "react";
-import styled from "styled-components";
+import { StyledHeader, NavContainer } from "header-styles";
 
-const StyledHeader = styled.header`
-  width: 100vw;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #191919;
-`;
 
-const NavContainer = styled.nav`
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 const Header = () => {
   return (
