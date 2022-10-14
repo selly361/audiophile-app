@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   width: 100vw;
-  height: 15vh;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
