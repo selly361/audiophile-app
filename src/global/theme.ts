@@ -10,7 +10,7 @@ colors: {
     white: "#FFFFFF",
     silver: "#F1F1F1",
     lightSilver: "#FAFAFA",
-}
+},
     
  fonts: {
    primaryFont: `'Manrope', sans-serif`,
