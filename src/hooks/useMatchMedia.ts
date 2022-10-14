@@ -6,7 +6,7 @@ type UseMatchMediaType = {
   isMobileSize: boolean
 }
 
-const useMatchMedia = (): UseMatchMediaType => {
+export const useMatchMedia = (): UseMatchMediaType => {
   const mobileQuery = window.matchMedia('(min-width: 320px) and (max-width: 767px)')
   const tabletQuery = window.matchMedia('(min-width: 768px) and (max-width: 1023px)')
   const desktopQuery = window.matchMedia('(min-width: 1024px)')
