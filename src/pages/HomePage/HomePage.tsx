@@ -9,10 +9,13 @@ const StyledMain = styled.main`
 `
 
 const IntroSection = styled.section`
-    width: 100vw;
+  width: 100vw;
   height: calc(100vh - 80px);
   background-color: #191919;
 `
+
+
+
 const HomePage = () => {
   return (
     <StyledMain>
