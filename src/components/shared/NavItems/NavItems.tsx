@@ -1,6 +1,6 @@
 import { NavItem, StyledNavItems } from "./navitems-styles";
 
-import { navigations } from "./navigations";
+import { navigations } from "../../../data/navigations";
 
 const NavItems = () => {
   return (
@@ -9,6 +9,7 @@ const NavItems = () => {
         <NavItem
           to={nav.path}
           className={({ isActive }) => (isActive ? "active" : "")}
+          end
         >
           {nav.label}
         </NavItem>

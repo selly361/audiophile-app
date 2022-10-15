@@ -29,12 +29,12 @@ export const nav_drop_down = {
     visible: {
         x: 0,
         opacity: 1,
-        transition: { type: "spring", duration: .8, bounce: 0.05, staggerChildren: .5 },
+        transition: { type: "spring", duration: 1, bounce: 0.05, staggerChildren: .5 },
     },
     exit: {
         x: "-100vw",
         opacity: 0,
-        transition: { duration: .8, staggerChildren: .5 },
+        transition: { duration: 1, staggerChildren: .5 },
     },
 }
 

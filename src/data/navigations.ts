@@ -1,5 +1,5 @@
 export const navigations = [
-    { label: "Checkout", path: "/checkout" },
+    { label: "Home", path: "/" },
     { label: "Headphones", path: "/headphones" },
     { label: "speakers", path: "/speakers" },
     { label: "Earphones", path: "/earphones" },

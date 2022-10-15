@@ -1,10 +1,12 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 
-import dataSlice from 'features/dataSlice'
+import dataReducer from 'features/dataSlice'
+import slideReducer from 'features/slideSlice'
 
 export const store = configureStore({
   reducer: {
-    data: dataSlice
+    data: dataReducer,
+    slide: slideReducer
   },
 });
 

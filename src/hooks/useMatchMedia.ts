@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react'
 
-type UseMatchMediaType = {
-  isDesktopSize: boolean
-  isTabletSize: boolean
-  isMobileSize: boolean
-}
-
 type EventType = MediaQueryList | MediaQueryListEvent
 
 
-export const useMatchMedia = (): UseMatchMediaType => {
+export const useMatchMedia = () => {
   const mobileQuery = matchMedia('(min-width: 320px) and (max-width: 767px)')
   const tabletQuery = matchMedia('(min-width: 768px) and (max-width: 1023px)')
   const desktopQuery = matchMedia('(min-width: 1024px)')

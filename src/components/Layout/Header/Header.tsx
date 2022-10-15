@@ -1,4 +1,4 @@
-import { CartIcon, LogoIcon } from "assets/shared/desktop";
+import { BurgerIcon, CartIcon, LogoIcon } from "assets/icons";
 import { Category, NavItems, Overlay } from "components/shared";
 import {
   CategoryWrapper,
@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 
 import { AnimatePresence } from "framer-motion";
-import { ReactComponent as BurgerIcon } from "assets/shared/tablet/icon-hamburger.svg";
+import { Link } from "react-router-dom";
 import { nav_drop_down } from "global/animation";
 import { useMatchMedia } from "hooks/useMatchMedia";
 
@@ -33,7 +33,9 @@ const Header = () => {
         <NavContainer>
           <LogoWrapper>
             {!isDesktopSize && <BurgerIcon onClick={() => setOpen(!open)} />}
-            <LogoIcon />
+            <Link to="/">
+              <LogoIcon />
+            </Link>
           </LogoWrapper>
           {isDesktopSize && <NavItems />}
           <AnimatePresence>
@@ -48,7 +50,6 @@ const Header = () => {
               </CategoryWrapper>
             )}
           </AnimatePresence>
-
           <CartIcon />
         </NavContainer>
       </StyledHeader>

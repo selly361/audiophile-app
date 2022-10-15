@@ -1,6 +1,7 @@
 export const theme = {
     
 colors: {
+    headerBg: "",
     orange: "#D87D4A",
     lightOrange: "#FBAF85",
     darkGrey: "#101010",

@@ -1,0 +1,8 @@
+export { ReactComponent as LogoIcon } from './logo.svg'
+export { ReactComponent as CartIcon } from './icon-cart.svg'
+export { ReactComponent as BurgerIcon } from './icon-hamburger.svg'
+export { ReactComponent as FaceBookIcon } from './icon-facebook.svg'
+export { ReactComponent as InstagramIcon } from './icon-instagram.svg'
+export { ReactComponent as TwitterIcon } from './icon-twitter.svg'
+export { ReactComponent as OrderIcon } from './icon-order-confirmation.svg'
+export { ReactComponent as CashDelivIcon } from './icon-cash-on-delivery.svg'

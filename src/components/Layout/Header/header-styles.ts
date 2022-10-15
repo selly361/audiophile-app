@@ -10,7 +10,6 @@ export const StyledHeader = styled.header`
   background-color: #191919;
   position: relative;
   z-index: 50;
-
 `;
 
 export const NavContainer = styled.nav`
@@ -18,6 +17,8 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 
