@@ -35,16 +35,17 @@ export const useMatchMedia = (): UseMatchMediaType => {
     handleTabletMediaChanged(tabletQuery)
     handleDesktopMediaChanged(desktopQuery)
 
-      mobileQuery.addEventListener('change', handleMobileMediaChanged)
-      tabletQuery.addEventListener('change', handleTabletMediaChanged)
-      desktopQuery.addEventListener('change', handleDesktopMediaChanged)
+    mobileQuery.addEventListener('change', handleMobileMediaChanged)
+    tabletQuery.addEventListener('change', handleTabletMediaChanged)
+    desktopQuery.addEventListener('change', handleDesktopMediaChanged)
 
     return () => {
-        mobileQuery.removeEventListener('change', handleMobileMediaChanged)
-        tabletQuery.removeEventListener('change', handleTabletMediaChanged)
-        desktopQuery.removeEventListener('change', handleDesktopMediaChanged)
+      mobileQuery.removeEventListener('change', handleMobileMediaChanged)
+      tabletQuery.removeEventListener('change', handleTabletMediaChanged)
+      desktopQuery.removeEventListener('change', handleDesktopMediaChanged)
     }
-  }, [desktopQuery, mobileQuery, tabletQuery])
+
+  }, [])
 
   return { isMobileSize, isTabletSize, isDesktopSize }
 }

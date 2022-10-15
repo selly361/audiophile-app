@@ -1,39 +1,20 @@
-import { NavLink } from 'react-router-dom';
-import React from 'react'
-import { headingFourFontStyle } from '../../../utilities/defaultStyles';
-import styled from 'styled-components';
+import { NavItem, StyledNavItems } from "./navitems-styles";
 
-const StyledNavItems = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-`;
-
-const NavItem = styled(NavLink)`
-  ${headingFourFontStyle}
-  font-size: 13px;
-  color: white;
-  
-  &:hover {
-    color: #D87D4A;
-  }
-
-  &.active {
-    color: #d87d4a;
-  }
-`;
+import { navigations } from "./navigations";
 
 const NavItems = () => {
-  const navs = ["home", "headphones", "speakers", "earphones"];
   return (
     <StyledNavItems>
-    {navs.map((nav) => (
-      <NavItem to={nav == "home" ? "/" : nav} className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
-        {nav}
-      </NavItem>
-    ))}
-  </StyledNavItems>
-  )
-}
+      {navigations.map((nav) => (
+        <NavItem
+          to={nav.path}
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          {nav.label}
+        </NavItem>
+      ))}
+    </StyledNavItems>
+  );
+};
 
-export default NavItems
+export default NavItems;

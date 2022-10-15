@@ -1,3 +1,43 @@
-export const fadeIn = {
-    
+
+export const fade_in_out = {
+    hidden: {
+        opacity: 0,
+    },
+
+    visible: {
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+        },
+
+    },
+
+    exit: {
+        opacity: 0,
+        transition: {
+            duration: 0.8
+        },
+    },
+};
+
+
+export const nav_drop_down = {
+    hidden: {
+        x: "-100vw",
+        opacity: 0
+    },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { type: "spring", duration: .8, bounce: 0.05, staggerChildren: .5 },
+    },
+    exit: {
+        x: "-100vw",
+        opacity: 0,
+        transition: { duration: .8, staggerChildren: .5 },
+    },
+}
+
+export const category_animation = {
+
 }
