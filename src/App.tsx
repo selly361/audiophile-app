@@ -10,7 +10,7 @@ const App = () => {
     <Wrapper>
       <Header />
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/:product" element={<ProductPage />} />
         <Route path="/products_detail/:product" element={<ProductsDetailPage />} />
       </Routes>

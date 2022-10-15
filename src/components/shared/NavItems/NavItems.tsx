@@ -28,7 +28,7 @@ const NavItems = () => {
   return (
     <StyledNavItems>
     {navs.map((nav) => (
-      <NavItem to={nav} className={(isActive) => isActive && "active"}>
+      <NavItem to={nav == "home" ? "/" : nav} className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
         {nav}
       </NavItem>
     ))}

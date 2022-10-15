@@ -22,4 +22,8 @@ export const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     }
+
+    button, svg {
+        cursor: pointer;
+    }
 `
