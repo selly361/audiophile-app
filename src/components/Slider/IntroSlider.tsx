@@ -1,18 +1,14 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { Link, useMatch } from "react-router-dom";
-import {
-  OrangeButton,
-  primaryFontStyle,
-} from "utilities/defaultStyles";
-import React, { useEffect, useRef, useState } from "react";
-import { nextSlide, previousSlide } from "features/slideSlice";
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import 'react-slideshow-image/dist/styles.css'
 
-import { nav_drop_down } from "global/animation";
+import { OrangeButton, primaryFontStyle } from "utilities/defaultStyles";
+
+import { Link } from "react-router-dom";
+import { Slide } from "react-slideshow-image";
+import { slideData } from 'data/slideData';
 import styled from "styled-components";
 import { useMatchMedia } from "hooks/useMatchMedia";
 
-const SlideWrapper = styled(motion.div)`
+const SlideWrapper = styled.div`
   width: 100vw;
   height: calc(100vh - 80px);
   background-color: #191919;
@@ -60,58 +56,47 @@ const StyledButton = styled(Link)`
 `;
 
 const Slider = () => {
-  const data = useAppSelector((state) => state.slide);
-  const {
-    new: newProduct,
-    name,
-    slug,
-    description,
-    category,
-    image,
-  } = data.currentSlide;
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    let slideInterval = setInterval(() => {
-      dispatch(nextSlide());
-    }, 5000);
-
-    return () => {
-      clearInterval(slideInterval);
-    };
-  }, []);
 
 
   const { isMobileSize, isDesktopSize, isTabletSize } = useMatchMedia();
 
+  const properties = {
+    duration: 3000,
+    transitionDuration: 2000,
+    infinite: true,
+    indicators: false,
+    arrows: true,
+    pauseOnHover: true,
+  };
+  
   return (
-    <AnimatePresence>
-        <SlideWrapper
-          variants={nav_drop_down}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <StyledArticle>
-            <NewProductTag>{newProduct ? "NEW PRODUCT" : ""}</NewProductTag>
-            <br />
-            <ProductName>{name}</ProductName>
-            <br />
-            <ProductDesc>{description}</ProductDesc>
-            <br />
-              <StyledButton to={`/${category}/${slug}`}>SEE PRODUCT</StyledButton>
-            <br />
-          </StyledArticle>
-          <ProductImage
-            onClick={() => dispatch(nextSlide())}
-            src={
-              image[
-                isDesktopSize ? "desktop" : isTabletSize ? "tablet" : "mobile"
-              ]
-            }
-          />
-        </SlideWrapper>
-    </AnimatePresence>
+    <Slide {...properties}>
+      {slideData.map(
+        ({ new: newProduct, name, slug, description, category, image }) => (
+          <SlideWrapper>
+            <StyledArticle>
+              <NewProductTag>{newProduct ? "NEW PRODUCT" : ""}</NewProductTag>
+              <br />
+              <ProductName>{name}</ProductName>
+              <br />
+              <ProductDesc>{description}</ProductDesc>
+              <br />
+              <StyledButton to={`/${category}/${slug}`}>
+                SEE PRODUCT
+              </StyledButton>
+              <br />
+            </StyledArticle>
+            <ProductImage
+              src={
+                image[
+                  isDesktopSize ? "desktop" : isTabletSize ? "tablet" : "mobile"
+                ]
+              }
+            />
+          </SlideWrapper>
+        )
+      )}
+    </Slide>
   );
 };
 
