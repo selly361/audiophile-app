@@ -8,13 +8,11 @@ import Wrapper from 'components/Wrapper/Wrapper'
 const App = () => {
   return (
     <Wrapper>
-      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/:product" element={<ProductPage />} />
         <Route path="/:category/:product" element={<ProductsDetailPage />} />
       </Routes>
-      <Footer />
     </Wrapper>
   )
 }

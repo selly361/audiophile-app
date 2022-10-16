@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from 'styled-components'
 
 // Typography
 
@@ -7,7 +7,7 @@ export const primaryFontStyle = css`
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
-`;
+`
 
 const buttonFontStyle = css`
   font-style: normal;
@@ -16,7 +16,7 @@ const buttonFontStyle = css`
   line-height: 18px;
   letter-spacing: 1px;
   text-transform: uppercase;
-`;
+`
 
 // default h1 - h6 styles
 
@@ -25,49 +25,49 @@ const commonHeadingFontStyle = css`
   font-weight: 700;
   color: #000000;
   text-transform: uppercase;
-`;
+`
 
 export const headingOneFontStyle = css`
   ${commonHeadingFontStyle}
   font-size: 56px;
   line-height: 58px;
   letter-spacing: 2px;
-`;
+`
 
 export const headingTwoFontStyle = css`
   ${commonHeadingFontStyle}
   font-size: 40px;
   line-height: 44px;
   letter-spacing: 1.42857px;
-`;
+`
 
 export const headingThreeFontStyle = css`
   ${commonHeadingFontStyle}
   font-size: 32px;
   line-height: 36px;
   letter-spacing: 1.14286px;
-`;
+`
 
 export const headingFourFontStyle = css`
   ${commonHeadingFontStyle}
   font-size: 28px;
   line-height: 38px;
   letter-spacing: 2px;
-`;
+`
 
 export const headingFiveFontStyle = css`
   ${commonHeadingFontStyle}
   font-size: 24px;
   line-height: 33px;
   letter-spacing: 1.71429px;
-`;
+`
 
 export const headingSixFontStyle = css`
   ${commonHeadingFontStyle}
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 1.28571px;
-`;
+`
 
 // Buttons
 
@@ -75,7 +75,9 @@ const commonButtonStyle = css`
   border: none;
   width: 160px;
   height: 48px;
-`;
+  display: grid;
+  place-items: center;
+`
 
 export const OrangeButton = css`
   ${commonButtonStyle}
@@ -87,51 +89,79 @@ export const OrangeButton = css`
   &:hover {
     background-color: #fbaf85;
   }
-`;
+`
 
 export const WhiteButton = css`
+  ${commonButtonStyle}
+  ${buttonFontStyle}
   background-color: #ffffff;
   color: #000000;
   transition: 0.5s ease border, 0.5s ease background-color, 0.5s ease color;
-  
+
   &:hover {
     border: 1px solid #000000;
     color: #ffffff;
     background-color: #000000;
   }
-`;
+`
 
+export const BlackButton = css`
+  ${commonButtonStyle}
+  ${buttonFontStyle}
+  background-color: #000000;
+  color: #ffffff;
+  transition: 0.5s ease border, 0.5s ease background-color, 0.5s ease color;
+
+  &:hover {
+    background-color: #4C4C4C;
+  }
+`
+
+export const transparentButton = css`
+  ${commonButtonStyle}
+  ${buttonFontStyle}
+    background-color: transparent;
+  color: #000000;
+  border: 1px solid black;
+  transition: 0.5s ease border, 0.5s ease background-color, 0.5s ease color;
+
+  &:hover {
+    color: white;
+    border: 1px solid #000000;
+    background-color: #000000;
+  }
+`
 
 // Form Elements
 
 const commonInputStyle = css`
-    width: 309px;
-    height: 56px;
-    background: #FFFFFF;
-    border: 1px solid #CFCFCF;
-    border-radius: 8px;
-    color: #000000;
-    transition: .5s ease border;
-    padding: 1rem;
-    
-    &:focus, &:active {
-        border: 1px solid #D87D4A;
-    }
+  width: 309px;
+  height: 56px;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  color: #000000;
+  transition: 0.5s ease border;
+  padding: 1rem;
+
+  &:focus,
+  &:active {
+    border: 1px solid #d87d4a;
+  }
 `
 
 export const TextField = css`
-    ${commonInputStyle}
+  ${commonInputStyle}
 
-    &.error {
-        border: 2px solid #CD2C2C;
-    }
+  &.error {
+    border: 2px solid #cd2c2c;
+  }
 `
 
 export const RadioInput = css`
-    ${commonInputStyle}
+  ${commonInputStyle}
 
-    &:hover {
-        border: 1px solid #D87D4A;
-    }
-    
+  &:hover {
+    border: 1px solid #d87d4a;
+  }
 `

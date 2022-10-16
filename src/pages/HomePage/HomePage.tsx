@@ -1,9 +1,14 @@
+import BottomSection from "components/templates/HomeTemplate/BottomSection"
+import { Category } from "components/shared"
 import IntroSlider from "components/Slider/IntroSlider"
 import React from 'react'
+import YX1Earphones from "components/templates/HomeTemplate/YX1Earphones"
+import ZX7Speaker from "components/templates/HomeTemplate/ZX7Speaker"
+import ZX9Speaker from "components/templates/HomeTemplate/ZX9Speaker"
 import styled from 'styled-components'
 
-const StyledMain = styled.main`
-  height: 100vh;
+const Container = styled.div`
+  min-height: 100vh;
   width: 100vw;
   
 `
@@ -14,15 +19,33 @@ const IntroSection = styled.section`
   background-color: #191919;
 `
 
+const StyledMain  = styled.main`
+  min-height: 100vh;
+  width: 85vw;
+  display: flex;
+  flex-flow: column;
+  gap: 6rem;
+  align-items: center;
+  margin: auto;
+  padding-top: 6rem;
+`
+
 
 
 const HomePage = () => {
   return (
-    <StyledMain>
+    <Container>
       <IntroSection>
         <IntroSlider />
       </IntroSection>
-    </StyledMain>
+      <StyledMain>
+          <Category />
+          <ZX9Speaker />
+          <ZX7Speaker />
+          <YX1Earphones />
+          <BottomSection />
+      </StyledMain>
+    </Container>
   )
 }
 

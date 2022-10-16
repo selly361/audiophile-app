@@ -1,18 +1,22 @@
-import React, { Fragment, ReactNode } from 'react'
+import React, { Fragment, ReactNode } from "react";
 
-import { GlobalStyle } from 'global/GlobalStyles'
+import Footer from "components/Layout/Footer/Footer";
+import { GlobalStyle } from "global/GlobalStyles";
+import Header from "components/Layout/Header/Header";
 
-interface PropTypes  {
-    children: ReactNode
+interface PropTypes {
+  children: ReactNode;
 }
 
 const Wrapper = ({ children }: PropTypes) => {
   return (
     <Fragment>
-        <GlobalStyle />
-        {children}
+      <Header />
+      <GlobalStyle />
+      {children}
+      <Footer />
     </Fragment>
-  )
-}
+  );
+};
 
-export default Wrapper
+export default Wrapper;

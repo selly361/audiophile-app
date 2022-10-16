@@ -41,3 +41,22 @@ export const nav_drop_down = {
 export const category_animation = {
 
 }
+
+export const left_to_right_scroll_animation = {
+    hidden: {
+        y: "20vh",
+        opacity: 0,
+    },
+
+    inView: {
+        y: 0,
+        opacity: 1,
+
+        transition: {
+            delay: 0.3,
+            duration: 0.7,
+            staggerChildren: 0.5,
+        },
+    },
+}
+

@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Manrope";
     }
 
-    body {
+    body, #root {
         width: 100vw;
         min-height: 100vh;
         overflow-x: hidden;

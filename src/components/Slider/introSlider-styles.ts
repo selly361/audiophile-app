@@ -1,9 +1,10 @@
 import { OrangeButton, primaryFontStyle } from "utilities/defaultStyles";
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
 import styled from "styled-components";
 
-export const SlideWrapper = styled.div`
+export const SlideWrapper = styled(motion.div)`
   width: 80vw;
   height: calc(100vh - 80px);
   background-color: #191919;
@@ -47,11 +48,10 @@ export const ProductImage = styled.img`
 
 export const StyledButton = styled(Link)`
   ${OrangeButton};
-  display: grid;
-  place-items: center;
 `;
 
 export const Container = styled.div`
   width: 80vw;
   margin: auto;
+  cursor: grab;
 `;

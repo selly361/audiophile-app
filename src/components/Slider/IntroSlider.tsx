@@ -8,7 +8,7 @@ import {
   ProductName,
   SlideWrapper,
   StyledArticle,
-  StyledButton
+  StyledButton,
 } from "./introSlider-styles";
 
 import { Slide } from "react-slideshow-image";
@@ -22,16 +22,21 @@ const Slider = () => {
     duration: 1000,
     transitionDuration: 2000,
     infinite: true,
-    arrows: true,
+    arrows: false,
     pauseOnHover: true,
   };
+
+  
 
   return (
     <Container>
       <Slide {...properties}>
         {slideData.map(
           ({ new: newProduct, name, slug, description, category, image }) => (
-            <SlideWrapper>
+            <SlideWrapper
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 1.3 } }}
+            >
               <StyledArticle>
                 <NewProductTag>{newProduct ? "NEW PRODUCT" : ""}</NewProductTag>
                 <br />
