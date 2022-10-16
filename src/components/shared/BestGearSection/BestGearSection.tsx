@@ -38,7 +38,7 @@ const Image = styled.div`
         
 `
 
-const BottomSection = () => {
+const BestGearSection = () => {
   return (
     <Container>
       <StyledArticle>
@@ -59,4 +59,4 @@ const BottomSection = () => {
   )
 }
 
-export default BottomSection
+export default BestGearSection

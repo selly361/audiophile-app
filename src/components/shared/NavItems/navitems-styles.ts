@@ -6,6 +6,14 @@ export const StyledNavItems = styled.ul`
   list-style: none;
   display: flex;
   gap: 1rem;
+
+  @media (max-width: 568px){
+    &.footer-nav {
+      flex-flow: column;
+      align-items: center;
+      width: 100%;
+  }
+  }
 `;
 
 export const NavItem = styled(NavLink)`
@@ -20,4 +28,5 @@ export const NavItem = styled(NavLink)`
   &.active {
     color: #d87d4a;
   }
+
 `;

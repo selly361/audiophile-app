@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100vw;
         min-height: 100vh;
         overflow-x: hidden;
+        display: grid;
     }
 
 

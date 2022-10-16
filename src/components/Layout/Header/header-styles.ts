@@ -40,4 +40,5 @@ export const CategoryWrapper = styled(motion.div)`
   display: grid;
   place-items: center;
   z-index: 20;
+  padding: 2rem;
 `

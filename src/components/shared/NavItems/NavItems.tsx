@@ -2,13 +2,13 @@ import { NavItem, StyledNavItems } from "./navitems-styles";
 
 import { navigations } from "../../../data/navigations";
 
-const NavItems = () => {
+const NavItems = ({ className }: { className?: string }) => {
   return (
-    <StyledNavItems>
+    <StyledNavItems className={className}>
       {navigations.map((nav) => (
         <NavItem
           to={nav.path}
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) => (isActive ? 'active' : '')}
           end
         >
           {nav.label}

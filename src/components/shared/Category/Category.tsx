@@ -9,18 +9,18 @@ import styled from "styled-components";
 const StyledCategory = styled(motion.div)`
   width: 100%;
   height: max-content;
-  display: grid;
+  display: flex;
   gap: 1rem;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
 `;
 const CategoryTitle = styled.h6`
   ${headingSixFontStyle};
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: .8rem;
   }
+
 `;
 
 const CategoryItem = styled(motion(Link))`
@@ -34,6 +34,7 @@ const CategoryItem = styled(motion(Link))`
   position: relative;
   padding: 1rem;
   border-radius: 10px;
+  width: calc(100% / 3);
   cursor: pointer;
   &:hover {
     button {

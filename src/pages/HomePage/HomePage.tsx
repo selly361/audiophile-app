@@ -1,4 +1,4 @@
-import BottomSection from "components/templates/HomeTemplate/BottomSection"
+import BottomSection from "components/shared/BestGearSection/BestGearSection"
 import { Category } from "components/shared"
 import IntroSlider from "components/Slider/IntroSlider"
 import React from 'react'
