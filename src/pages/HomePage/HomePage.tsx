@@ -17,6 +17,10 @@ const IntroSection = styled.section`
   width: 100vw;
   height: calc(100vh - 80px);
   background-color: #191919;
+  background: url("images/home/desktop/image-hero.jpg") no-repeat;
+  background-size: cover;
+  background-position: left;
+  
 `
 
 const StyledMain  = styled.main`

@@ -6,7 +6,7 @@ import { headingSixFontStyle } from "utilities/defaultStyles";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-const StyledCategory = styled(motion.div)`
+const StyledCategory = styled(motion.div) `
   width: 100%;
   height: max-content;
   display: flex;
@@ -77,16 +77,16 @@ const ShopButton = styled.button`
   }
 `;
 
-const Category = () => {
+const Category = ({ animate = true }: { animate?: boolean }) => {
   return (
     <StyledCategory
       viewport={{ once: true }}
-      initial={{ x: -700, opacity: 0 }}
-      whileInView={{
+      initial={animate ? { x: -700, opacity: 0 } : {}}
+      whileInView={animate ? {
         x: 0,
         opacity: 1,
         transition: { duration: 1, delay: 0.7 },
-      }}
+      } : {}}
     >
       {categories.map((categ) => (
         <CategoryItem to={categ.category} key={categ.category}>

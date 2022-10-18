@@ -46,7 +46,7 @@ const Header = () => {
                 animate="visible"
                 exit="exit"
               >
-                <Category />
+                <Category animate={false} />
               </CategoryWrapper>
             )}
           </AnimatePresence>

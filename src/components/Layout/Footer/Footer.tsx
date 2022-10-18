@@ -32,11 +32,10 @@ const StyledFooter = styled.footer`
   }
 
   @media (max-width: 568px) {
-    height: 654px;
+    height: max-content;
   }
 
   @media (max-width: 368px){
-    height: 800px;
   }
 `
 
