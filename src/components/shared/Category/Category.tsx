@@ -89,7 +89,7 @@ const Category = ({ animate = true }: { animate?: boolean }) => {
       } : {}}
     >
       {categories.map((categ) => (
-        <CategoryItem to={categ.category} key={categ.category}>
+        <CategoryItem to={`/${categ.category}`} key={categ.category}>
           <CategoryImage src={categ.image} />
           <CategoryTitle>{categ.category}</CategoryTitle>
           <ShopButton>

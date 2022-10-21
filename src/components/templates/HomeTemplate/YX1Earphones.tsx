@@ -12,10 +12,7 @@ const Container = styled.div`
 `
 
 
-const Image = styled.div`
-    background: url("images/home/desktop/image-earphones-yx1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+const Image = styled.img`
     border-radius: 8px;
 `
 
@@ -29,7 +26,7 @@ const Wrapper = styled.div`
 
 const YX1Earphones = () => {
   return <Container>
-    <Image />
+    <Image src="images/home/desktop/image-earphones-yx1.jpg" />
     <Wrapper>
         <Content>
             <ProductName>YX1 EARPHONES</ProductName>

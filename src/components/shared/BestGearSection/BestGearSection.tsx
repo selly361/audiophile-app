@@ -31,9 +31,7 @@ const Description = styled.p`
     color: ${({ theme }) => theme.colors.slate};
 `
 
-const Image = styled.div`
-    background-image: url("images/shared/desktop/image-best-gear.jpg");
-    background-size: cover;
+const Image = styled.img`
     border-radius: 8px;
         
 `
@@ -54,7 +52,7 @@ const BestGearSection = () => {
           best place to buy your portable audio equipment.
         </Description>
       </StyledArticle>
-      <Image />
+      <Image src="images/shared/desktop/image-best-gear.jpg" />
     </Container>
   )
 }

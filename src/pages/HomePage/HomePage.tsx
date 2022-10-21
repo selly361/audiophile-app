@@ -15,12 +15,12 @@ const Container = styled.div`
 
 const IntroSection = styled.section`
   width: 100vw;
-  height: calc(100vh - 80px);
+  min-height: max-content;
   background-color: #191919;
   background: url("images/home/desktop/image-hero.jpg") no-repeat;
   background-size: cover;
-  background-position: left;
-  
+  background-position: center;
+  padding-bottom: 3rem;
 `
 
 const StyledMain  = styled.main`

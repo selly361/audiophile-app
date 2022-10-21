@@ -12,7 +12,7 @@ import {
 } from "./introSlider-styles";
 
 import { Slide } from "react-slideshow-image";
-import { slideData } from "data/slideData";
+import { productData } from "data/productData";
 import { useMatchMedia } from "hooks/useMatchMedia";
 
 const Slider = () => {
@@ -31,7 +31,7 @@ const Slider = () => {
   return (
     <Container>
       <Slide {...properties}>
-        {slideData.map(
+        {productData.map(
           ({ new: newProduct, name, slug, description, category, image }) => (
             <SlideWrapper
               initial={{ opacity: 0 }}

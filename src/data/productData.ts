@@ -1,4 +1,4 @@
-export const slideData = [
+export const productData = [
     {
         id: 1,
         slug: "yx1-earphones",
