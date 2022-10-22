@@ -2,7 +2,11 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { productData } from 'data/productData'
 import styled from 'styled-components'
-import { headingOneFontStyle, OrangeButton, primaryFontStyle } from 'utilities/defaultStyles'
+import {
+  headingOneFontStyle,
+  OrangeButton,
+  primaryFontStyle,
+} from 'utilities/defaultStyles'
 import { Category } from 'components/shared'
 import BestGearSection from 'components/shared/BestGearSection/BestGearSection'
 
@@ -17,7 +21,6 @@ const IntroHeader = styled.section`
   background-color: #191919;
   display: grid;
   place-items: center;
-  
 `
 
 const Title = styled.h1`
@@ -35,7 +38,6 @@ const MainContainer = styled.main`
   margin: auto;
   min-height: 100vh;
   padding-top: 160px;
-
 `
 
 const Button = styled.button`
@@ -44,33 +46,37 @@ const Button = styled.button`
 
 const ProductDesc = styled.p`
   ${primaryFontStyle}
-  color: ${({ theme }) => theme.colors.slate};
-`;
+  color: #000000;
+  opacity: 0.5;
+`
 
 const ProductName = styled.h3`
-  font-size: 2.5rem;
+  font-size: 40px;
   font-weight: bold;
   height: max-content;
-`;
+`
 
 const NewProductTag = styled.h3`
-  letter-spacing: 0.625rem;
-  font-size: 1.1rem;
   height: 20px;
-  color: ${({ theme }) => theme.colors.orange};
-`;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: #d87d4a;
+`
 
 const ProductContainer = styled.div`
   height: 560px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  justify-items: center;
 `
 
 const ProductImage = styled.img`
   border-radius: 8px;
-  width: 100%;
+  width: 50%;
   height: 100%;
 `
 
@@ -78,7 +84,7 @@ const StyledArticle = styled.article`
   display: flex;
   flex-flow: column;
   gap: 1rem;
-  padding: 3rem;
+  width: 400px;
 `
 
 const ProductPage = () => {
@@ -95,18 +101,30 @@ const ProductPage = () => {
       <MainContainer>
         {chosenProductData.map((productData, index) => (
           <ProductContainer key={productData.slug}>
-            {index % 2 === 0 && <ProductImage src={productData.image.desktop} alt={productData.name} />}
+            {index % 2 === 0 && (
+              <ProductImage
+                src={productData.image.desktop}
+                alt={productData.name}
+              />
+            )}
             <StyledArticle>
-            <NewProductTag>{productData.new ? "NEW PRODUCT" : ""}</NewProductTag>
-            <ProductName>{productData.name}</ProductName>
-            <ProductDesc>{productData.description}</ProductDesc>
-            <Button>SEE PRODUCT</Button>
+              <NewProductTag>
+                {productData.new ? 'NEW PRODUCT' : ''}
+              </NewProductTag>
+              <ProductName>{productData.name}</ProductName>
+              <ProductDesc>{productData.description}</ProductDesc>
+              <Button>SEE PRODUCT</Button>
             </StyledArticle>
-            {index % 2 !== 0 && <ProductImage src={productData.image.desktop} alt={productData.name} />}
+            {index % 2 !== 0 && (
+              <ProductImage
+                src={productData.image.desktop}
+                alt={productData.name}
+              />
+            )}
           </ProductContainer>
         ))}
-              <Category />
-      <BestGearSection />
+        <Category />
+        <BestGearSection />
       </MainContainer>
     </Container>
   )
