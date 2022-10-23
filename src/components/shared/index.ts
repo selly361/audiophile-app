@@ -3,3 +3,4 @@
 export { default as NavItems } from "./NavItems/NavItems"
 export { default as Category } from "./Category/Category"
 export { default as Overlay } from "./Overlay/Overlay"
+export { default as ProductImage } from "./ProductUtils/ProductImage/ProductImage"

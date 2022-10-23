@@ -1,61 +1,64 @@
-import "react-slideshow-image/dist/styles.css";
+import 'react-slideshow-image/dist/styles.css'
 
 import {
   Container,
   NewProductTag,
   ProductDesc,
-  ProductImage,
   ProductName,
   SlideWrapper,
   StyledArticle,
   StyledButton,
-} from "./introSlider-styles";
+} from './introSlider-styles'
 
-import { Slide } from "react-slideshow-image";
-import { productData } from "data/productData";
-import { useMatchMedia } from "hooks/useMatchMedia";
+import { ProductImage } from 'components/shared'
+import { Slide } from 'react-slideshow-image'
+import productData from 'data/data.json'
+import { useMatchMedia } from 'hooks/useMatchMedia'
 
 const Slider = () => {
-  const { isMobileSize, isDesktopSize, isTabletSize } = useMatchMedia();
+  const { isMobileSize, isDesktopSize, isTabletSize } = useMatchMedia()
 
   const properties = {
-    duration: 1000,
-    transitionDuration: 2000,
+    duration: 5000,
+    transitionDuration: 1000,
     infinite: true,
-    arrows: false,
+    arrows: true,
     pauseOnHover: true,
-  };
-
-  
+  }
 
   return (
     <Container>
       <Slide {...properties}>
-        {productData.map(
-          ({ new: newProduct, name, slug, description, category, image }) => (
-            <SlideWrapper
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 1.3 } }}
-            >
-              <StyledArticle>
-                <NewProductTag>{newProduct ? "NEW PRODUCT" : ""}</NewProductTag>
-                <br />
-                <ProductName>{name}</ProductName>
-                <br />
-                <ProductDesc>{description}</ProductDesc>
-                <br />
-                <StyledButton to={`/${category}/${slug}`}>
-                  SEE PRODUCT
-                </StyledButton>
-                <br />
-              </StyledArticle>
-              <ProductImage src={image.desktop} />
-            </SlideWrapper>
-          )
-        )}
+        {productData.map((data) => (
+          <SlideWrapper
+            key={data.name}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1.3 } }}
+          >
+            <StyledArticle>
+            {data.new && <NewProductTag>NEW PRODUCT</NewProductTag>}
+              <br />
+              <ProductName>{data.name}</ProductName>
+              <br />
+              <ProductDesc>{data.description}</ProductDesc>
+              <br />
+              <StyledButton to={`/product_detail/${data.slug}`}>
+                SEE PRODUCT
+              </StyledButton>
+              <br />
+            </StyledArticle>
+            <ProductImage
+              height="360px"
+              mobile="60vw"
+              width="max-content"
+              name={data.name}
+              image={data.image}
+            />
+          </SlideWrapper>
+        ))}
       </Slide>
     </Container>
-  );
-};
+  )
+}
 
-export default Slider;
+export default Slider

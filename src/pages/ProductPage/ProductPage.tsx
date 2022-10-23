@@ -1,14 +1,15 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { productData } from 'data/productData'
-import styled from 'styled-components'
+import { Category, ProductImage } from 'components/shared'
+import { Link, useParams } from 'react-router-dom'
 import {
-  headingOneFontStyle,
   OrangeButton,
+  headingOneFontStyle,
   primaryFontStyle,
 } from 'utilities/defaultStyles'
-import { Category } from 'components/shared'
+
 import BestGearSection from 'components/shared/BestGearSection/BestGearSection'
+import React from 'react'
+import { productData } from 'data/productData'
+import styled from 'styled-components'
 
 const Container = styled.div`
   min-height: 100vh;
@@ -31,7 +32,7 @@ const Title = styled.h1`
 `
 
 const MainContainer = styled.main`
-  width: 75vw;
+  width: 85vw;
   display: grid;
   grid-template-columns: 1fr;
   gap: 160px;
@@ -40,7 +41,7 @@ const MainContainer = styled.main`
   padding-top: 160px;
 `
 
-const Button = styled.button`
+const LinkButton = styled(Link)`
   ${OrangeButton}
 `
 
@@ -74,12 +75,6 @@ const ProductContainer = styled.div`
   justify-items: center;
 `
 
-const ProductImage = styled.img`
-  border-radius: 8px;
-  width: 50%;
-  height: 100%;
-`
-
 const StyledArticle = styled.article`
   display: flex;
   flex-flow: column;
@@ -88,24 +83,27 @@ const StyledArticle = styled.article`
 `
 
 const ProductPage = () => {
-  const { productCategory } = useParams()
+  const { category } = useParams()
 
   const chosenProductData = productData.filter(
-    (product) => product.category === productCategory,
+    (product) => product.category === category,
   )
+
   return (
     <Container>
       <IntroHeader>
-        <Title>{productCategory}</Title>
+        <Title>{category}</Title>
       </IntroHeader>
       <MainContainer>
         {chosenProductData.map((productData, index) => (
           <ProductContainer key={productData.slug}>
             {index % 2 === 0 && (
               <ProductImage
-                src={productData.image.desktop}
-                alt={productData.name}
-              />
+              image={productData.image}
+              name={productData.name}
+              width="50%"
+              height="100%"
+            />
             )}
             <StyledArticle>
               <NewProductTag>
@@ -113,12 +111,16 @@ const ProductPage = () => {
               </NewProductTag>
               <ProductName>{productData.name}</ProductName>
               <ProductDesc>{productData.description}</ProductDesc>
-              <Button>SEE PRODUCT</Button>
+              <LinkButton to={`/product_detail/${productData.slug}`}>
+                SEE PRODUCT
+              </LinkButton>
             </StyledArticle>
             {index % 2 !== 0 && (
               <ProductImage
-                src={productData.image.desktop}
-                alt={productData.name}
+                image={productData.image}
+                name={productData.name}
+                width="50%"
+                height="100%"
               />
             )}
           </ProductContainer>

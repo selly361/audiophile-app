@@ -7,6 +7,7 @@ const NavItems = ({ className }: { className?: string }) => {
     <StyledNavItems className={className}>
       {navigations.map((nav) => (
         <NavItem
+          key={nav.label}
           to={nav.path}
           className={({ isActive }) => (isActive ? 'active' : '')}
           end

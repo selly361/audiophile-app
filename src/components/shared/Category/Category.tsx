@@ -1,29 +1,35 @@
-import { ArrowRightIcon } from "assets/icons";
-import { Link } from "react-router-dom";
-import React from "react";
-import { categories } from "data/categoryData";
-import { headingSixFontStyle } from "utilities/defaultStyles";
-import { motion } from "framer-motion";
-import styled from "styled-components";
+import { ArrowRightIcon } from 'assets/icons'
+import { NavLink } from 'react-router-dom'
+import React from 'react'
+import { categories } from 'data/categoryData'
+import { headingSixFontStyle } from 'utilities/defaultStyles'
+import { motion } from 'framer-motion'
+import styled from 'styled-components'
 
-const StyledCategory = styled(motion.div) `
+const StyledCategory = styled(motion.div)`
   width: 100%;
   height: max-content;
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: center;
-`;
+
+  @media (max-width: 768px){
+    display: grid;
+    width: 90vw;
+    gap: 6rem;
+  }
+
+`
 const CategoryTitle = styled.h6`
   ${headingSixFontStyle};
 
   @media (max-width: 768px) {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
+`
 
-`;
-
-const CategoryItem = styled(motion(Link))`
+const CategoryItem = styled(NavLink)`
   background-color: ${({ theme }) => theme.colors.silver};
   height: 180px;
   display: flex;
@@ -36,7 +42,14 @@ const CategoryItem = styled(motion(Link))`
   border-radius: 10px;
   width: calc(100% / 3);
   cursor: pointer;
-  &:hover {
+  border: 2px dashed transparent;
+  transition: 1s border;
+  &:hover,
+  &.active {
+    & {
+      border: 2px dashed ${({ theme }) => theme.colors.orange};
+    }
+
     button {
       gap: 2rem;
 
@@ -49,7 +62,11 @@ const CategoryItem = styled(motion(Link))`
       top: -75px;
     }
   }
-`;
+  
+  @media (max-width: 768px){
+    width: 70vw;
+  }
+`
 
 const CategoryImage = styled.img`
   height: 130px;
@@ -61,7 +78,7 @@ const CategoryImage = styled.img`
   @media (max-width: 900px) {
     height: 100px;
   }
-`;
+`
 
 const ShopButton = styled.button`
   height: 20px;
@@ -75,21 +92,29 @@ const ShopButton = styled.button`
     color: ${({ theme }) => theme.colors.slate};
     transition: 0.7s color;
   }
-`;
+`
 
 const Category = ({ animate = true }: { animate?: boolean }) => {
   return (
     <StyledCategory
       viewport={{ once: true }}
       initial={animate ? { x: -700, opacity: 0 } : {}}
-      whileInView={animate ? {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 1, delay: 0.7 },
-      } : {}}
+      whileInView={
+        animate
+          ? {
+              x: 0,
+              opacity: 1,
+              transition: { duration: 1, delay: 0.7 },
+            }
+          : {}
+      }
     >
       {categories.map((categ) => (
-        <CategoryItem to={`/${categ.category}`} key={categ.category}>
+        <CategoryItem
+          to={`/${categ.category}`}
+          key={categ.category}
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
           <CategoryImage src={categ.image} />
           <CategoryTitle>{categ.category}</CategoryTitle>
           <ShopButton>
@@ -99,7 +124,7 @@ const Category = ({ animate = true }: { animate?: boolean }) => {
         </CategoryItem>
       ))}
     </StyledCategory>
-  );
-};
+  )
+}
 
-export default Category;
+export default Category

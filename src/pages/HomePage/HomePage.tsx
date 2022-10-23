@@ -1,43 +1,12 @@
+import { Container, IntroSection, StyledMain } from "./homepage-styles"
+import { YX1Earphones, ZX7Speaker, ZX9Speaker } from "components/templates/HomeTemplate"
+
 import BottomSection from "components/shared/BestGearSection/BestGearSection"
 import { Category } from "components/shared"
 import IntroSlider from "components/Slider/IntroSlider"
-import React from 'react'
-import YX1Earphones from "components/templates/HomeTemplate/YX1Earphones"
-import ZX7Speaker from "components/templates/HomeTemplate/ZX7Speaker"
-import ZX9Speaker from "components/templates/HomeTemplate/ZX9Speaker"
-import styled from 'styled-components'
-
-const Container = styled.div`
-  min-height: 100vh;
-  width: 100vw;
-  
-`
-
-const IntroSection = styled.section`
-  width: 100vw;
-  min-height: max-content;
-  background-color: #191919;
-  background: url("images/home/desktop/image-hero.jpg") no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 3rem;
-`
-
-const StyledMain  = styled.main`
-  min-height: 100vh;
-  width: 85vw;
-  display: flex;
-  flex-flow: column;
-  gap: 6rem;
-  align-items: center;
-  margin: auto;
-  padding-top: 6rem;
-`
-
-
 
 const HomePage = () => {
-  return (
+  return ( 
     <Container>
       <IntroSection>
         <IntroSlider />

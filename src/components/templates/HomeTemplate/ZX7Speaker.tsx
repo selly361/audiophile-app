@@ -19,7 +19,7 @@ const ZX7Speaker = () => {
     <Container>
       <Content>
         <ProductName>ZX7 SPEAKER</ProductName>
-        <Button to="speakers/zx7-speaker">SEE PRODUCT</Button>
+        <Button to="product_detail/zx7-speaker">SEE PRODUCT</Button>
       </Content>
     </Container>
   )

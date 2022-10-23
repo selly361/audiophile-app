@@ -31,7 +31,7 @@ export const LogoWrapper = styled.div`
 
 export const CategoryWrapper = styled(motion.div)`
   width: 100vw;
-  height: 300px;
+  height: max-content;
   background-color: white;
   position: absolute;
   top: 80px;
@@ -41,4 +41,5 @@ export const CategoryWrapper = styled(motion.div)`
   place-items: center;
   z-index: 20;
   padding: 2rem;
+  padding-top: 6rem;
 `

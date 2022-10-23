@@ -1,23 +1,23 @@
-import App from "./App";
-import { Provider } from "react-redux";
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { createRoot } from "react-dom/client";
-import { store } from "./app/store";
-import { theme } from "./global/theme";
+import App from './App'
+import { Provider } from 'react-redux'
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import { createRoot } from 'react-dom/client'
+import { store } from './app/store'
+import { theme } from './global/theme'
 
-const container = document.getElementById("root")!;
-const root = createRoot(container);
+const container = document.getElementById('root')!;
+const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-      <Router>
-        <App />
-      </Router>
+        <Router>
+          <App />
+        </Router>
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)
