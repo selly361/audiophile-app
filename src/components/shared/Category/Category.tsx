@@ -7,19 +7,18 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 const StyledCategory = styled(motion.div)`
-  width: 100%;
+  width: 85vw;
   height: max-content;
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     display: grid;
     width: 90vw;
     gap: 6rem;
   }
-
 `
 const CategoryTitle = styled.h6`
   ${headingSixFontStyle};
@@ -62,8 +61,8 @@ const CategoryItem = styled(NavLink)`
       top: -75px;
     }
   }
-  
-  @media (max-width: 768px){
+
+  @media (max-width: 768px) {
     width: 70vw;
   }
 `
@@ -98,18 +97,14 @@ const Category = ({ animate = true }: { animate?: boolean }) => {
   return (
     <StyledCategory
       viewport={{ once: true }}
-      initial={animate ? { x: -700, opacity: 0 } : {}}
-      whileInView={
-        animate
-          ? {
-              x: 0,
-              opacity: 1,
-              transition: { duration: 1, delay: 0.7 },
-            }
-          : {}
-      }
+      initial={ { x: -300, opacity: 0 }}
+      whileInView={{
+        x: 0,
+        opacity: 1,
+        transition: { duration: 1, delay: 0.7 },
+      }}
     >
-      {categories.map((categ) => (
+      {categories.map((categ, index) => (
         <CategoryItem
           to={`/${categ.category}`}
           key={categ.category}

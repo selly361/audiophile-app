@@ -2,20 +2,27 @@ import { BurgerIcon, CartIcon, LogoIcon } from "assets/icons";
 import { Category, NavItems, Overlay } from "components/shared";
 import {
   CategoryWrapper,
+  IconWrapper,
   LogoWrapper,
   NavContainer,
-  StyledHeader,
+  Notification,
+  StyledHeader
 } from "./header-styles";
+import { useAppDispatch, useAppSelector } from "app/hooks";
 import { useEffect, useState } from "react";
 
 import { AnimatePresence } from "framer-motion";
+import { Icon } from "components/Modals/Cart/EmptyCart";
 import { Link } from "react-router-dom";
 import { nav_drop_down } from "global/animation";
+import { openModal } from "features/modalSlice";
 import { useMatchMedia } from "hooks/useMatchMedia";
 
 const Header = () => {
   const { isDesktopSize } = useMatchMedia();
   const [open, setOpen] = useState(false);
+  const { cart } = useAppSelector(state => state.cart)
+  const dispatch = useAppDispatch()
 
   const handleReset = () => {
     setOpen(false);
@@ -50,10 +57,13 @@ const Header = () => {
               </CategoryWrapper>
             )}
           </AnimatePresence>
-          <CartIcon />
+          <IconWrapper>
+            {cart.length !== 0 && <Notification>{cart.length}</Notification>}
+            <CartIcon onClick={() => dispatch(openModal({ type: "cart" }))} />
+          </IconWrapper>
         </NavContainer>
       </StyledHeader>
-      <Overlay open={open} handleReset={handleReset} />
+      <Overlay zIndex="30" open={open} handleReset={handleReset} />
     </>
   );
 };

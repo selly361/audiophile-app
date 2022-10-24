@@ -4,7 +4,7 @@ const modalSlice = createSlice({
     name: "modal",
     initialState: {
         type: "",
-        open: true,
+        open: false,
         data: {}
         
     },

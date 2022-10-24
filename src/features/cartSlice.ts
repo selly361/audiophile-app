@@ -3,35 +3,43 @@ import products from '../data/data.json'
 
 type cardProductType = {
     id: number,
-    quantity: number
+    quantity: number,
+    price: number,
+    slug: string,
 }
 
-let cart: cardProductType[] = []
-
+let cart: cardProductType[] = JSON.parse(localStorage.getItem("cart") || "[]")
 
 
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cart,
-        products
     },
 
     reducers: {
         addToCart: (state, action) => {
             const { cart } = state;
-            const { id } = action.payload;
+            const { id, amount = 1, price, slug } = action.payload;
 
             // check if the product exists in the cart
             let existsIndex = cart.findIndex(product => product.id === id)
 
-            /* if the product exists in the cart then increment the quantity by 1
+            /* if the product exists in the cart then increment the quantity by the amount
             otherwise add it to the cart with a quantity of 1*/
 
             if (existsIndex !== -1) {
-                cart[existsIndex].quantity += 1
+
+
+                if (cart[existsIndex].quantity + amount > 20) {
+                    cart[existsIndex].quantity = 20;
+                } else {
+                    cart[existsIndex].quantity += amount
+
+                }
+
             } else {
-                cart.push({ id, quantity: 1 })
+                cart.push({ price, slug, id, quantity: amount })
             }
         },
 
@@ -48,7 +56,7 @@ const cartSlice = createSlice({
         },
 
 
-        emptyCart: (state) => {
+        removeAll: (state) => {
             // Deletes everything
             state.cart = []
         },
@@ -94,4 +102,4 @@ const cartSlice = createSlice({
 })
 
 export default cartSlice.reducer;
-export const { deleteFromCart, addToCart, increment, decrement, emptyCart } = cartSlice.actions
+export const { deleteFromCart, addToCart, increment, decrement, removeAll } = cartSlice.actions

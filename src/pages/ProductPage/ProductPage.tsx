@@ -8,6 +8,7 @@ import {
 
 import BestGearSection from 'components/shared/BestGearSection/BestGearSection'
 import React from 'react'
+import { motion } from 'framer-motion'
 import { productData } from 'data/productData'
 import styled from 'styled-components'
 
@@ -16,7 +17,7 @@ const Container = styled.div`
   width: 100vw;
 `
 
-const IntroHeader = styled.section`
+const IntroHeader = styled(motion.section)`
   width: 100vw;
   height: 239px;
   background-color: #191919;
@@ -67,12 +68,15 @@ const NewProductTag = styled.h3`
   color: #d87d4a;
 `
 
-const ProductContainer = styled.div`
+const ProductContainer = styled(motion.div)`
   height: 560px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   justify-items: center;
+
+
+
 `
 
 const StyledArticle = styled.article`
@@ -80,6 +84,10 @@ const StyledArticle = styled.article`
   flex-flow: column;
   gap: 1rem;
   width: 400px;
+
+  &:nth-child(odd) {
+    order: 2;
+  }
 `
 
 const ProductPage = () => {
@@ -91,20 +99,21 @@ const ProductPage = () => {
 
   return (
     <Container>
-      <IntroHeader>
+      <IntroHeader initial={{ height: 0 }} animate={{ height: "239px" }}>
         <Title>{category}</Title>
       </IntroHeader>
       <MainContainer>
         {chosenProductData.map((productData, index) => (
-          <ProductContainer key={productData.slug}>
-            {index % 2 === 0 && (
+          <ProductContainer
+          initial={{ opacity: 0, x: index % 2 === 0 ? -300 : 300 }}
+          whileInView={{ opacity: 1, x: 0, y: 0, transition: { duration: .8, delay: index/4 } }}
+          key={productData.slug}>
               <ProductImage
               image={productData.image}
               name={productData.name}
               width="50%"
               height="100%"
             />
-            )}
             <StyledArticle>
               <NewProductTag>
                 {productData.new ? 'NEW PRODUCT' : ''}
@@ -115,14 +124,6 @@ const ProductPage = () => {
                 SEE PRODUCT
               </LinkButton>
             </StyledArticle>
-            {index % 2 !== 0 && (
-              <ProductImage
-                image={productData.image}
-                name={productData.name}
-                width="50%"
-                height="100%"
-              />
-            )}
           </ProductContainer>
         ))}
         <Category />

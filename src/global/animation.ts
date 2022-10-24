@@ -60,3 +60,21 @@ export const left_to_right_scroll_animation = {
     },
 }
 
+
+export const cart_animation = {
+    hidden: {
+        x: "100vw",
+        opacity: 0
+    },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { type: "spring", duration: 1, bounce: 0.05, staggerChildren: .5 },
+    },
+    exit: {
+        x: "100vw",
+        opacity: 0,
+        transition: { duration: 1, staggerChildren: .5 },
+    },
+}
+

@@ -4,15 +4,18 @@ import {
   headingThreeFontStyle,
   primaryFontStyle,
 } from 'utilities/defaultStyles'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import BestGearSection from 'components/shared/BestGearSection/BestGearSection'
 import { ImageGallery } from 'components/templates/ProductDetailsTemplate'
 import ProductsDetail from 'components/templates/ProductDetailsTemplate/ProductsDetail/ProductsDetail'
-import React from 'react'
+import QuantityButton from 'components/shared/QuantityButton/QuantityButton'
 import SimilarItems from 'components/templates/ProductDetailsTemplate/SimilarItems/SimilarItems'
+import { addToCart } from 'features/cartSlice'
 import data from 'data/data.json'
 import styled from 'styled-components'
+import { useAppDispatch } from 'app/hooks'
 
 const Container = styled.main`
   width: 75vw;
@@ -87,13 +90,24 @@ const NewProductTag = styled.h3`
   color: #d87d4a;
 `
 
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`
 
+const AddCartButton = styled.button`
+  ${OrangeButton}
+  color: white;
+`
 
 const ProductsDetailPage = () => {
   const { productName } = useParams()
   const product = data.find((product) => product.slug === productName)
-
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
+  const [quantity, setQuantity] = useState(1)
 
   return (
     <Container>
@@ -111,6 +125,29 @@ const ProductsDetailPage = () => {
             <ProductTitle>{product?.name}</ProductTitle>
             <ProductDesc>{product?.description}</ProductDesc>
             <Price>${product?.price.toLocaleString()}</Price>
+            <ButtonContainer>
+              <QuantityButton
+                quantity={quantity}
+                increment={() => setQuantity(quantity + 1)}
+                decrement={() => quantity > 1 && setQuantity(quantity - 1)}
+              />
+              <AddCartButton
+                onClick={() =>{
+                  dispatch(
+                    addToCart({
+                      amount: quantity,
+                      id: product?.id,
+                      slug: product?.slug,
+                      price: product?.price,
+                    }),
+                  )
+                  setQuantity(1)
+                }
+                }
+              >
+                ADD TO CART
+              </AddCartButton>
+            </ButtonContainer>
           </StyledArticle>
         </ProductContainer>
       </TopContainer>

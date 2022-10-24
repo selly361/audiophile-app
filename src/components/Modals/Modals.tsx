@@ -1,24 +1,35 @@
-import React, { Fragment } from 'react'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 
 import { AnimatePresence } from 'framer-motion'
+import Cart from './Cart/Cart'
 import { Overlay } from 'components/shared'
+import React from 'react'
 import { closeModal } from 'features/modalSlice'
-import { createRoot } from 'react-dom/client'
 
 const Modals = () => {
   const { open, data, type } = useAppSelector((state) => state.modal)
+
   const dispatch = useAppDispatch()
 
-  console.log(open, data, type)
+  
+  React.useEffect(() => {
+    if(open){
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+  }, [open])
+
   return (
-    <Fragment>
-      <AnimatePresence>{}</AnimatePresence>
-      <Overlay open={open} handleReset={() => dispatch(closeModal())} />
-    </Fragment>
+    <React.Fragment>
+      <AnimatePresence>
+        {type === "cart" && <Cart />}
+        </AnimatePresence>
+      <Overlay zIndex="100" open={open} handleReset={() => dispatch(closeModal())} />
+    </React.Fragment>
   )
 }
 
-const modalRoot = document.getElementById('modal-root') as HTMLElement;
-const root = createRoot(modalRoot)
-root.render(<Modals />)
+export default Modals;
+
+

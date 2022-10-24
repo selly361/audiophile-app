@@ -26,10 +26,15 @@ const Image = styled.img<ImageProps>`
   height: ${(props) => props.height};
   object-fit: contain;
 
+  
+
   @media (max-width: 1024px){
+   & {
     width: ${props => props.mobile};
     height: ${props => props.mobile};
+   }
   }
+
 `
 
 const ProductImage = ({ width, height, image, name, mobile = ''}: PropTypes) => {

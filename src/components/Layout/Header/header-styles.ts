@@ -10,6 +10,10 @@ export const StyledHeader = styled.header`
   background-color: #191919;
   position: relative;
   z-index: 50;
+
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export const NavContainer = styled.nav`
@@ -42,4 +46,26 @@ export const CategoryWrapper = styled(motion.div)`
   z-index: 20;
   padding: 2rem;
   padding-top: 6rem;
+`
+
+export const IconWrapper = styled.div`
+  width: max-content;
+  height: max-content;
+  position: relative;
+`
+
+export const Notification = styled.div`
+  height: 20px;
+  width: 20px;
+  background-color: ${({theme}) => theme.colors.orange};
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  top: -10px;
+  right: -10px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
 `
