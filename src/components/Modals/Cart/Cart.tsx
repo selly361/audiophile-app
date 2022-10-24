@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, usePresence } from 'framer-motion'
 import {
   OrangeButton,
   headingFiveFontStyle,
@@ -12,21 +12,27 @@ import { useAppDispatch, useAppSelector } from 'app/hooks'
 import EmptyCart from './EmptyCart'
 import { Link } from 'react-router-dom'
 import QuantityButton from 'components/shared/QuantityButton/QuantityButton'
-import { cart_animation } from 'global/animation'
+import { closeModal } from 'features/modalSlice'
+import { slide_animation } from 'global/animation'
 import styled from 'styled-components'
 
 const Container = styled(motion.div)`
   position: absolute;
   width: 377px;
-  max-height: 500px;
+  max-height: 90vh;
   overflow-y: auto;
-  min-height: 188px;
+  height: max-content;
   right: 14vw;
   top: 16vh;
   background: #ffffff;
   border-radius: 8px;
   z-index: 200;
   padding: 2rem;
+
+  @media (max-width: 1100px){
+    inset: 0;
+    margin: auto;
+  }
 `
 
 const Wrapper = styled.div`
@@ -134,13 +140,13 @@ const Cart = () => {
   )
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem('cart', JSON.stringify(cart))
   }, [JSON.stringify(cart)])
 
   if (cart.length === 0)
     return (
       <Container
-        variants={cart_animation}
+        variants={slide_animation}
         initial="hidden"
         animate="visible"
         exit="exit"
@@ -151,7 +157,7 @@ const Cart = () => {
 
   return (
     <Container
-      variants={cart_animation}
+      variants={slide_animation}
       initial="hidden"
       animate="visible"
       exit="exit"
@@ -164,39 +170,36 @@ const Cart = () => {
           </RemoveAllButton>
         </CartHeader>
         <ItemsContainer>
-            {cart.map((item, index) => (
-          <AnimatePresence>
-          <ItemContainer
-                initial={{ scale: 0.8, opacity: 0, x: '-100px' }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  x: 0,
-                  transition: { delay: (index + 1)/2, duration: 0.5 },
-                }}
-                exit={{ scale: 0.8, opacity: 0, x: '100px' }}
-              >
-                <Item>
-                  <CartImage src={`images/cart/image-${item.slug}.jpg`} />
-                  <div>
-                    <Name>{item.slug.split('-')[0]}</Name>
-                    <Price>${item.price.toLocaleString()}</Price>
-                  </div>
-                </Item>
-                <QuantityButton
-                  decrement={() => dispatch(decrement({ id: item.id }))}
-                  quantity={item.quantity}
-                  increment={() => dispatch(increment({ id: item.id }))}
-                />
-              </ItemContainer>
-              </AnimatePresence>
-            ))}
+          {cart.map((item, index) => (
+            <ItemContainer
+              initial={{ scale: 0.8, opacity: 0, x: '-100px' }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                x: 0,
+                transition: { delay: (index + 1) / 2, duration: 0.5 },
+              }}
+            >
+              <Item>
+                <CartImage src={`images/cart/image-${item.slug}.jpg`} />
+                <div>
+                  <Name>{item.slug.split('-')[0]}</Name>
+                  <Price>${item.price.toLocaleString()}</Price>
+                </div>
+              </Item>
+              <QuantityButton
+                decrement={() => dispatch(decrement({ id: item.id }))}
+                quantity={item.quantity}
+                increment={() => dispatch(increment({ id: item.id }))}
+              />
+            </ItemContainer>
+          ))}
         </ItemsContainer>
         <CartTotal>
           <TotalText>TOTAL</TotalText>
           <TotalPrice>${total.toLocaleString()}</TotalPrice>
         </CartTotal>
-        <CheckoutLink to="/checkout">Checkout</CheckoutLink>
+        <CheckoutLink to="/checkout" onClick={() => dispatch(closeModal())}>Checkout</CheckoutLink>
       </Wrapper>
     </Container>
   )

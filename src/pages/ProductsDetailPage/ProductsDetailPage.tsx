@@ -18,12 +18,16 @@ import styled from 'styled-components'
 import { useAppDispatch } from 'app/hooks'
 
 const Container = styled.main`
-  width: 75vw;
+  width: 85vw;
   padding-top: 6rem;
   margin: auto;
   display: flex;
   flex-flow: column;
   gap: 160px;
+
+  @media (max-width: 1000px){
+    width: 95vw;
+  }
 `
 
 const GoBackLink = styled.a`
@@ -57,6 +61,17 @@ const ProductContainer = styled.div`
   min-height: 560px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+
+  @media (max-width: 1000px){
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    img {
+      width: 100%;
+      height: 400px;
+    }
+  }
 `
 
 const StyledArticle = styled.article`
@@ -66,6 +81,11 @@ const StyledArticle = styled.article`
   width: 400px;
   align-self: center;
   justify-self: end;
+
+  @media (max-width: 1000px){
+    width: 100%;
+    padding: 1rem;
+  }
 `
 
 const ProductDesc = styled.p`
@@ -117,7 +137,7 @@ const ProductsDetailPage = () => {
           <ProductImage
             image={product?.image}
             name={product?.name}
-            height=""
+            height="100%"
             width="100%"
           />
           <StyledArticle>

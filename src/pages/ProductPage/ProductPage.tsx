@@ -40,6 +40,10 @@ const MainContainer = styled.main`
   margin: auto;
   min-height: 100vh;
   padding-top: 160px;
+
+  @media (max-width: 1000px){
+    width: 95vw;
+  }
 `
 
 const LinkButton = styled(Link)`
@@ -50,6 +54,7 @@ const ProductDesc = styled.p`
   ${primaryFontStyle}
   color: #000000;
   opacity: 0.5;
+  width: 100%;
 `
 
 const ProductName = styled.h3`
@@ -74,20 +79,46 @@ const ProductContainer = styled(motion.div)`
   justify-content: space-between;
   align-items: center;
   justify-items: center;
+  width: 85vw;
+  margin: auto;
+
+  @media (max-width: 1000px) {
+    flex-flow: column;
+    height: max-content;
+    gap: 2rem;
+
+    img {
+      width: 480px;
+    }
+
+    article {
+      width: 100%;
+      text-align: center;
+
+      a {
+        margin: auto;
+      }
+    }
+  }
 
 
+  @media (max-width: 800px){
+    img {
+      width: 80vw
+    }
+  }
 
+  
+  @media (max-width: 1000px){
+    width: 95vw;
+  }
 `
 
 const StyledArticle = styled.article`
   display: flex;
   flex-flow: column;
   gap: 1rem;
-  width: 400px;
-
-  &:nth-child(odd) {
-    order: 2;
-  }
+  width: 40%;
 `
 
 const ProductPage = () => {
@@ -99,19 +130,25 @@ const ProductPage = () => {
 
   return (
     <Container>
-      <IntroHeader initial={{ height: 0 }} animate={{ height: "239px" }}>
+      <IntroHeader initial={{ height: 0 }} animate={{ height: '239px' }}>
         <Title>{category}</Title>
       </IntroHeader>
       <MainContainer>
         {chosenProductData.map((productData, index) => (
           <ProductContainer
-          initial={{ opacity: 0, x: index % 2 === 0 ? -300 : 300 }}
-          whileInView={{ opacity: 1, x: 0, y: 0, transition: { duration: .8, delay: index/4 } }}
-          key={productData.slug}>
-              <ProductImage
+            initial={{ opacity: 0, x: index % 2 === 0 ? -300 : 300 }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              transition: { duration: 0.8, delay: index / 4 },
+            }}
+            key={productData.slug}
+          >
+            <ProductImage
               image={productData.image}
               name={productData.name}
-              width="50%"
+              width="40%"
               height="100%"
             />
             <StyledArticle>

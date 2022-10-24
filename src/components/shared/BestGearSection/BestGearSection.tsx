@@ -5,9 +5,22 @@ import styled from 'styled-components'
 
 const Container = styled.section`
   height: 588px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  width: 85vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+
+  @media (max-width: 1140px) {
+    height: max-content;
+    flex-flow: column-reverse;
+    gap: 2rem;
+
+    article {
+      width: 100%;
+      text-align: center;
+    }
+  }
 `
 
 const Heading = styled.h2`
@@ -19,11 +32,11 @@ const Heading = styled.h2`
 `
 
 const StyledArticle = styled.article`
-    display: flex;
-    flex-flow: column;
-    gap: 2rem;
-    align-self: center;
-    width: 400px;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  align-self: center;
+  width: 400px;
 `
 
 const Description = styled.p`
@@ -32,9 +45,16 @@ const Description = styled.p`
 `
 
 const Image = styled.img`
-    border-radius: 8px;
-        
+  border-radius: 8px;
+
+  @media (max-width: 1140px) {
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+  }
 `
+
+
 
 const BestGearSection = () => {
   return (

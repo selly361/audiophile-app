@@ -23,12 +23,27 @@ const Container = styled(motion.div)`
   justify-content: center;
   gap: 20%;
   overflow: hidden;
+  padding: 0 1rem;
+
+  @media (max-width: 780px){
+    overflow: unset;
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    height: 800px;
+      
+  }
 `
 
 const Image = styled(motion.img)`
-  height: 493px;
+  height: 70%;
   position: relative;
   bottom: -10px;
+
+  @media (max-width: 780px){
+    height: 300px;
+    bottom: unset;
+  }
 `
 
 const ContentWrapper = styled(motion.article)`
@@ -37,6 +52,15 @@ const ContentWrapper = styled(motion.article)`
   display: flex;
   flex-direction: column;
   gap: 5%;
+
+  @media (max-width: 780px){
+    text-align: center;
+      
+
+    a {
+      margin: auto;
+    }
+  }
 `
 
 const Name = styled.h2`

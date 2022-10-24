@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const GalleryImages = styled.div`
+  width: 95%;
   height: max-content;
   display: grid;
   grid-template-columns: 40% 1fr;

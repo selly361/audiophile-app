@@ -21,6 +21,7 @@ const ImageGallery = ({ gallery }: PropTypes) => {
   const { isDesktopSize, isTabletSize, isMobileSize  } = useMatchMedia()
 
   let device = isDesktopSize ? "desktop" : isTabletSize ? "tablet" : "mobile"
+  
   return (
     <GalleryImages>
     <GalleryImageOne src={gallery.first[device]} />

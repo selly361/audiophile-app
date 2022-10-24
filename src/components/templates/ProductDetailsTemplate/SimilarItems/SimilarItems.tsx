@@ -65,7 +65,7 @@ const SimilarItems = ({ others }: PropTypes) => {
       <Wrapper>
       {others.map((product: ProductType) => (
         <ProductWrapper>
-          <ProductImage width="100%" height="100%" name={product.name} image={product.image} />
+          <ProductImage width="90%" height="100%" name={product.name} image={product.image} />
           <Name>{product.name}</Name>
           <ButtonLink to={`/product_detail/${product.slug}`}>SEE PRODUCT</ButtonLink>
         </ProductWrapper>

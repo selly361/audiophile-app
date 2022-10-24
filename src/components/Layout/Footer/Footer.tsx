@@ -15,27 +15,25 @@ const StyledFooter = styled.footer`
   min-height: 400px;
   width: 100vw;
   background-color: #191919;
-  margin-top: 6rem;
-
   padding: 0 165px;
   position: relative;
   align-self: end;
 
   @media (max-width: 900px) {
     padding: 0 60px;
-  padding-bottom: 46px;
+    padding-bottom: 46px;
   }
 
   @media (max-width: 768px) {
     padding: 0 40px;
-  padding-bottom: 46px;
+    padding-bottom: 46px;
   }
 
   @media (max-width: 568px) {
     height: max-content;
   }
 
-  @media (max-width: 368px){
+  @media (max-width: 368px) {
   }
 `
 
@@ -76,8 +74,6 @@ const NavContainer = styled.nav`
   @media (max-width: 568px) {
     align-items: center;
   }
-
-
 `
 
 const Wrapper = styled.div`
@@ -86,12 +82,12 @@ const Wrapper = styled.div`
   min-height: 202px;
   position: relative;
 
-  
   @media (max-width: 568px) {
     grid-template-columns: 1fr;
     gap: 48px;
     padding-bottom: 40px;
-    p, div {
+    p,
+    div {
       justify-self: center;
       text-align: center;
     }
@@ -127,9 +123,9 @@ const SocialMediaIcons = styled.div`
   svg path {
     transition: 1s ease fill;
   }
-  
+
   svg:hover path {
-    fill: ${({theme}) => theme.colors.orange};
+    fill: ${({ theme }) => theme.colors.orange};
   }
 
   @media (max-width: 568px) {

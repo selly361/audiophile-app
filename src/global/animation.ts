@@ -61,7 +61,7 @@ export const left_to_right_scroll_animation = {
 }
 
 
-export const cart_animation = {
+export const slide_animation = {
     hidden: {
         x: "100vw",
         opacity: 0

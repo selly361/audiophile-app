@@ -9,8 +9,14 @@ import styled from 'styled-components'
 const ProductDetailsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
   margin: auto;
+
+  @media (max-width: 1000px){
+    display: grid;
+    gap: 1rem;
+
+  }
 `
 
 const ListContainer = styled.ul`
@@ -18,6 +24,11 @@ const ListContainer = styled.ul`
   gap: 0.4rem;
   list-style: none;
   height: max-content;
+
+  @media (max-width: 1000px){
+    width: 100%;
+    padding: 1rem;
+  }
 `
 
 const ListItem = styled.li`
@@ -50,6 +61,11 @@ const FeaturesContainer = styled.div`
   width: 70%;
   display: grid;
   gap: 2rem;
+
+  @media (max-width: 1000px){
+    width: 100%;
+    padding: 1rem;
+  }
 `
 const HeadingThree = styled.h3`
   ${headingThreeFontStyle}
@@ -64,6 +80,8 @@ interface PropTypes {
   features: string | any
   includes: ItemProp[] | any;
 }
+
+
 
 function ProductsDetail({ features, includes }: PropTypes) {
   return (
