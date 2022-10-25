@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   width: 100%;
   height: 320px;
-  background: url('images/home/desktop/image-speaker-zx7.jpg');
+  background: url('images/home/desktop/image-speaker-zx7.jpg') no-repeat;
   background-size: cover;
   border-radius: 8px;
   padding-left: 95px;

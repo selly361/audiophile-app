@@ -10,6 +10,10 @@ export const Content = styled.div`
   justify-content: space-between;
   flex-flow: column;
   
+
+  @media (max-width: 1000px){
+    width: 80%;
+  }
 `
 
 export const ProductName = styled.h5`
