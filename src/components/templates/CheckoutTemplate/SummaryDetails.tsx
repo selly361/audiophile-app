@@ -123,13 +123,8 @@ const SubmitButton = styled.button`
 `
 
 const SummaryDetails = () => {
-    const { cart } = useAppSelector(state => state.cart)
+    const { cart, total } = useAppSelector(state => state.cart)
 
-    let total = cart.reduce(
-        (accumulator, currentValue) =>
-          accumulator + currentValue.price * currentValue.quantity,
-        0,
-      )
   return (
     <Container>
       <Wrapper>

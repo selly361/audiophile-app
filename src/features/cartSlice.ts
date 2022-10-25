@@ -10,11 +10,17 @@ type cardProductType = {
 
 let cart: cardProductType[] = JSON.parse(localStorage.getItem("cart") || "[]")
 
-
+let total = cart.reduce(
+    (accumulator, currentValue) =>
+      accumulator + currentValue.price * currentValue.quantity,
+    0,
+  )
+  
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cart,
+        total
     },
 
     reducers: {

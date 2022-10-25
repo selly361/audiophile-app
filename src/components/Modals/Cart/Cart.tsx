@@ -131,13 +131,9 @@ const CheckoutLink = styled(Link)`
 
 const Cart = () => {
   const dispatch = useAppDispatch()
-  const { cart } = useAppSelector((state) => state.cart)
+  const { cart, total } = useAppSelector((state) => state.cart)
 
-  let total = cart.reduce(
-    (accumulator, currentValue) =>
-      accumulator + currentValue.price * currentValue.quantity,
-    0,
-  )
+
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))

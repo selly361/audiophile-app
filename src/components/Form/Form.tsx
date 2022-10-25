@@ -9,8 +9,10 @@ import {
 import { CashDelivIcon } from 'assets/icons'
 import RadioButton from './RadioButton'
 import { defaultValues } from './defaultValues'
+import { openModal } from 'features/modalSlice'
 import { slide_animation } from 'global/animation'
 import styled from 'styled-components'
+import { useAppDispatch } from 'app/hooks'
 import { useForm } from 'react-hook-form'
 
 const Wrapper = styled.div`
@@ -127,20 +129,26 @@ const Desc = styled.p`
 `
 
 const Form = () => {
+  const dispatch = useAppDispatch()
   const [radio, setRadio] = useState('e-money')
-  const useFormDetails = useForm({ mode: 'onChange', defaultValues })
+  const methods = useForm({ mode: 'onChange', defaultValues })
   const {
     register,
-    control,
     handleSubmit,
-    getValues,
+    reset,
     formState: { errors },
-  } = useFormDetails
+  } = methods
+
+  const onSubmit = (data: any, e: any) => {
+    e.preventDefault()
+    dispatch(openModal({ type: "form" }))
+    reset()
+  }
 
   return (
     <Wrapper>
       <Title>CHECKOUT</Title>
-      <StyledForm id="form">
+      <StyledForm id="form" onSubmit={handleSubmit(onSubmit)}>
         <BillingDetails>
           <FieldsetTitle>BILLING DETAILS</FieldsetTitle>
           <InputContainer>
@@ -159,13 +167,18 @@ const Form = () => {
           <InputContainer>
             <LabelWrapper>
               <Label className={errors.email && 'error'}>Email Address</Label>
-              {errors.email && (
+              {errors.email?.type === 'pattern' ? (
+                <ErrorMessage>Email is invalid</ErrorMessage>
+              ) : errors.email ? (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
-              )}
+              ) : null}
             </LabelWrapper>
             <Input
               className={errors.email && 'error'}
-              {...register('email', { required: true })}
+              {...register('email', {
+                required: true,
+                pattern: /^\S+@\S+\.\S+$/,
+              })}
             />
           </InputContainer>
           <InputContainer>
@@ -197,13 +210,7 @@ const Form = () => {
           </AddressInputContainer>
           <InputContainer>
             <LabelWrapper>
-              <Label>ZIP Code</Label>
-            </LabelWrapper>
-            <Input />
-          </InputContainer>
-          <InputContainer>
-            <LabelWrapper>
-              <Label className={errors.zip_code && 'error'}>City</Label>
+              <Label className={errors.zip_code && 'error'}>ZIP Code</Label>
               {errors.zip_code && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
@@ -211,6 +218,18 @@ const Form = () => {
             <Input
               className={errors.zip_code && 'error'}
               {...register('zip_code', { required: true })}
+            />
+          </InputContainer>
+          <InputContainer>
+            <LabelWrapper>
+              <Label className={errors.city && 'error'}>City</Label>
+              {errors.city && (
+                <ErrorMessage>Field cannot be empty</ErrorMessage>
+              )}
+            </LabelWrapper>
+            <Input
+              className={errors.city && 'error'}
+              {...register('city', { required: true })}
             />
           </InputContainer>
           <InputContainer>
@@ -243,7 +262,7 @@ const Form = () => {
                     <Label className={errors.e_money_number && 'error'}>
                       e-Money Number
                     </Label>
-                    {errors.e_money_number&& (
+                    {errors.e_money_number && (
                       <ErrorMessage>Field cannot be empty</ErrorMessage>
                     )}
                   </LabelWrapper>

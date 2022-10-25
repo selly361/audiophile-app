@@ -101,7 +101,7 @@ const Category = ({ animate = true }: { animate?: boolean }) => {
       whileInView={{
         x: 0,
         opacity: 1,
-        transition: { duration: 1, delay: 0.7 },
+        transition: { duration: 1, delay: 0.3 },
       }}
     >
       {categories.map((categ, index) => (

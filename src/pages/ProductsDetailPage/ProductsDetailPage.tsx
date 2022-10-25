@@ -137,7 +137,7 @@ const ProductsDetailPage = () => {
           <ProductImage
             image={product?.image}
             name={product?.name}
-            height="100%"
+            height="90%"
             width="100%"
           />
           <StyledArticle>
