@@ -2,13 +2,13 @@ import { RadioInput, primaryFontStyle } from 'utilities/defaultStyles'
 
 import React from 'react'
 import styled from 'styled-components'
+import { RadioWrapper, StyledRadioButton, Circle, FilledCircle, Text } from "./form-styles.ts"
 
 interface PropTypes {
   setValue: Function
   value: string
 }
 
-import { RadioWrapper, StyledRadioButton, Circle, FilledCircle, Text } from "./form-styles.ts"
 
 
 
