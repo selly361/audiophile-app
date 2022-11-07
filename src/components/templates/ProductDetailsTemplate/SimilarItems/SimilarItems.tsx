@@ -1,11 +1,13 @@
-import React from 'react'
+import { Button, Container, Name, ProductWrapper, Title, Wrapper } from "./similarItems-styles"
+
 import { ProductImage } from 'components/shared'
-import { Container, Button, Title, Name, Wrapper, ProductWrapper } from "./similarItems-styles"
+import React from 'react'
 import { useNavigate } from "react-router-dom"
 
 interface ProductType {
   slug: string;
   name: string;
+  category: string;
   image: {
     mobile: string;
     tablet: string;
@@ -28,7 +30,6 @@ const SimilarItems = ({ others }: PropTypes) => {
           <ProductImage width="90%" height="100%" name={product.name} image={product.image} />
           <Name>{product.name}</Name>
           <Button onClick={() => {
-            navigate(-1) 
             navigate(`/${product.slug}`)
           }}>SEE PRODUCT</Button>
         </ProductWrapper>

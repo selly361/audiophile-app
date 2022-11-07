@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
 import {
+  RadioInput,
   TextField,
   headingTwoFontStyle,
   primaryFontStyle,
-  RadioInput,
 } from "utilities/defaultStyles";
 
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -16,12 +16,16 @@ export const Wrapper = styled.div`
   display: flex;
   flex-flow: column;
   gap: 56px;
-
+  
   &,
   form {
     display: flex;
     flex-flow: column;
     gap: 56px;
+  }
+
+  @media (max-width: 1000px){
+    padding: 1rem;
   }
 `;
 

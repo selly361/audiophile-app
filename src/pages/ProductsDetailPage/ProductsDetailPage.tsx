@@ -62,14 +62,23 @@ const ProductContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  img:first-child {
+    object-fit: cover;
+
+  }
 
   @media (max-width: 1000px){
     grid-template-columns: 1fr;
     gap: 2rem;
 
+    
+  img:first-child {
+    object-fit: contain;
+
+  }
+
     img {
-      width: 100%;
-      height: 400px;
+      width: 90%;
     }
   }
 `

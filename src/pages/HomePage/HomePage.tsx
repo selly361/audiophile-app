@@ -3,13 +3,13 @@ import { YX1Earphones, ZX7Speaker, ZX9Speaker } from "components/templates/HomeT
 
 import BottomSection from "components/shared/BestGearSection/BestGearSection"
 import { Category } from "components/shared"
-import IntroSlider from "components/Slider/IntroSlider"
+import HeroIntro from "components/templates/HomeTemplate/Slider/HeroIntro"
 
 const HomePage = () => {
   return ( 
     <Container>
       <IntroSection>
-        <IntroSlider />
+        <HeroIntro />
       </IntroSection>
       <StyledMain>
           <Category />

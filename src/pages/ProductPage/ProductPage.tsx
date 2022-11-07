@@ -157,7 +157,7 @@ const ProductPage = () => {
               </NewProductTag>
               <ProductName>{productData.name}</ProductName>
               <ProductDesc>{productData.description}</ProductDesc>
-              <LinkButton to={`/product_detail/${productData.slug}`}>
+              <LinkButton to={`/${productData.category}/${productData.slug}`}>
                 SEE PRODUCT
               </LinkButton>
             </StyledArticle>

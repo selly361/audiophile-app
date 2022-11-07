@@ -3,12 +3,13 @@ import {
     headingFiveFontStyle,
     headingFourFontStyle,
     primaryFontStyle,
-  } from 'utilities/defaultStyles'
-  import { Link } from 'react-router-dom'
-  import styled from 'styled-components'
-  import { motion } from "framer-motion"
-  
-  export const Container = styled(motion.div)`
+} from 'utilities/defaultStyles'
+
+import { Link } from 'react-router-dom'
+import { motion } from "framer-motion"
+import styled from 'styled-components'
+
+export const Container = styled(motion.div)`
     position: absolute;
     width: 377px;
     max-height: 90vh;
@@ -27,7 +28,7 @@ import {
     }
   `
   
-  export const Wrapper = styled.div`
+  export const Wrapper = styled(motion.div)`
     width: 100%;
     height: 100%;
     display: flex;

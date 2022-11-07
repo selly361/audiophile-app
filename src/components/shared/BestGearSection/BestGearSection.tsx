@@ -2,6 +2,7 @@ import { headingTwoFontStyle, primaryFontStyle } from 'utilities/defaultStyles'
 
 import React from 'react'
 import styled from 'styled-components'
+import { useMatchMedia } from 'hooks/useMatchMedia'
 
 const Container = styled.section`
   height: 588px;
@@ -48,7 +49,6 @@ const Image = styled.img`
   border-radius: 8px;
 
   @media (max-width: 1140px) {
-    height: 300px;
     width: 100%;
     object-fit: contain;
   }
@@ -57,6 +57,9 @@ const Image = styled.img`
 
 
 const BestGearSection = () => {
+  const { isDesktopSize, isTabletSize } = useMatchMedia()
+
+  let device = isDesktopSize ? "desktop" : isTabletSize ? "tablet" : "mobile"
   return (
     <Container>
       <StyledArticle>
@@ -72,7 +75,7 @@ const BestGearSection = () => {
           best place to buy your portable audio equipment.
         </Description>
       </StyledArticle>
-      <Image src="images/shared/desktop/image-best-gear.jpg" />
+      <Image src={`images/shared/${device}/image-best-gear.jpg`} />
     </Container>
   )
 }

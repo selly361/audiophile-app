@@ -14,6 +14,10 @@ const Container = styled.main`
   padding: 56px 48px;
   background: #f2f2f2;
   place-items: center;
+
+  @media (max-width: 1000px){
+    padding: 1rem;
+  }
 `
 
 const BackButton = styled.button`
@@ -28,6 +32,10 @@ const BackButton = styled.button`
   margin-left: 48px;
   &:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 1000px){
+    margin-left: 0;
   }
 `
 

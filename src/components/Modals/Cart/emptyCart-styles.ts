@@ -3,7 +3,7 @@ import { headingFourFontStyle } from 'utilities/defaultStyles'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-export const StyledEmptyCart = styled.div`
+export const StyledEmptyCart = styled(motion.div)`
   display: flex;
   height: 188px;
   padding: 2rem;

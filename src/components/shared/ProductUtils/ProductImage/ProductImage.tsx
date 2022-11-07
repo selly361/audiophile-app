@@ -40,7 +40,7 @@ const Image = styled.img<ImageProps>`
 const ProductImage = ({ width, height, image, name, mobile = ''}: PropTypes) => {
   const { isDesktopSize, isTabletSize, isMobileSize } = useMatchMedia()
 
-  const source = image[isDesktopSize ? 'desktop' : isTabletSize ? 'tablet' : 'mobile']
+  const source = image[isDesktopSize ? 'desktop' : 'mobile']
   return (
     <Image
       mobile={mobile}

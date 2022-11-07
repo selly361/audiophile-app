@@ -44,7 +44,7 @@ const YX1Earphones = () => {
       <Wrapper>
         <Content>
           <ProductName>YX1 EARPHONES</ProductName>
-          <Button to="product_detail/yx1-earphones">SEE PRODUCT</Button>
+          <Button to="earphones/yx1-earphones">SEE PRODUCT</Button>
         </Content>
       </Wrapper>
     </Container>

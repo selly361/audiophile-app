@@ -127,7 +127,7 @@ const ZX9Speaker = () => {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </Content>
-        <ButtonLink to="product_detail/zx9-speaker">SEE PRODUCT</ButtonLink>
+        <ButtonLink to="speakers/zx9-speaker">SEE PRODUCT</ButtonLink>
       </ContentWrapper>
     </Container>
   )
