@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProductImage } from 'components/shared'
 import { Container, Button, Title, Name, Wrapper, ProductWrapper } from "./similarItems-styles"
-import { useNavigator } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 interface ProductType {
   slug: string;
