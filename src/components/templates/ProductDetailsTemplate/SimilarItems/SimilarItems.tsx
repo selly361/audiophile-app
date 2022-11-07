@@ -18,7 +18,7 @@ interface PropTypes {
 }
 
 const SimilarItems = ({ others }: PropTypes) => {
-  const navigate = usenavigate()
+  const navigate = useNavigate()
   return (
     <Container>
       <Title>YOU MAY ALSO LIKE</Title>
