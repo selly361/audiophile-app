@@ -27,7 +27,10 @@ const SimilarItems = ({ others }: PropTypes) => {
         <ProductWrapper>
           <ProductImage width="90%" height="100%" name={product.name} image={product.image} />
           <Name>{product.name}</Name>
-          <Button onClick={() => navigate(-1) && navigate(`/${product.slug}`)}>SEE PRODUCT</Button>
+          <Button onClick={() => {
+            navigate(-1) 
+            navigate(`/${product.slug}`)
+          }}>SEE PRODUCT</Button>
         </ProductWrapper>
       ))}
       </Wrapper>
