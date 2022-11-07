@@ -1,48 +1,7 @@
-import { OrangeButton, headingFourFontStyle, headingThreeFontStyle } from 'utilities/defaultStyles'
-
-import { Link } from 'react-router-dom'
-import { ProductImage } from 'components/shared'
 import React from 'react'
-import styled from 'styled-components'
+import { ProductImage } from 'components/shared'
+import { Container, ButtonLink, Title, Name, Wrapper, ProductWrapper } from "./similarItems-styles"
 
-const Container = styled.div`
-  width: 100%;
-  display: grid;
-  gap: 3rem;
-`
-
-const ButtonLink = styled(Link)`
-  ${OrangeButton}
-`
-
-const Title = styled.h3`
-  ${headingThreeFontStyle}
-  text-align: center;
-`
-
-const Name = styled.h4`
-  ${headingFourFontStyle}
-  font-size: 23px;
-`
-
-const Wrapper = styled.div`
-  display: flex;
-  gap: 2rem;
-
-  @media (max-width: 1024px){
-    display: grid;
-    width: 100%;
-    justify-items: center;
-  }
-  
-`
-
-const ProductWrapper = styled.div`
-  display: grid;
-  justify-items: center;
-  gap: 1rem;
-  justify-content: space-between;
-`
 
 interface ProductType {
   slug: string;
