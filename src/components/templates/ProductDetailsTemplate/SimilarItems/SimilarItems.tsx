@@ -67,7 +67,7 @@ const SimilarItems = ({ others }: PropTypes) => {
         <ProductWrapper>
           <ProductImage width="90%" height="100%" name={product.name} image={product.image} />
           <Name>{product.name}</Name>
-          <ButtonLink to={`product_detail/${product.slug}`}>SEE PRODUCT</ButtonLink>
+          <ButtonLink to={`/product_detail/${product.slug}`}>SEE PRODUCT</ButtonLink>
         </ProductWrapper>
       ))}
       </Wrapper>
