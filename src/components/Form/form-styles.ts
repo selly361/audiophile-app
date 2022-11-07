@@ -4,7 +4,6 @@ import {
   headingTwoFontStyle,
   primaryFontStyle,
   RadioInput,
-  primaryFontStyle,
 } from "utilities/defaultStyles";
 
 import styled from "styled-components";
