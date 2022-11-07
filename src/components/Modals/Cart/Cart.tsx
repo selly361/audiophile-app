@@ -25,7 +25,7 @@ import {
   CartHeader,
   Wrapper,
   Container,
-} from "./cart-styles.ts";
+} from "./cart-styles";
 
 const Cart = () => {
   const dispatch = useAppDispatch();

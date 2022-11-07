@@ -17,7 +17,7 @@ import {
   AudiophileDescription,
   CopyrightText,
   SocialMediaIcons,
-} from "./footer-styles.ts";
+} from "./footer-styles";
 
 const Footer = () => {
   return (

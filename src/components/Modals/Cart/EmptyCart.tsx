@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, CartsEmptyText, StyledEmptyCart } from "./emptyCart-styles.ts";
+import { Icon, CartsEmptyText, StyledEmptyCart } from "./emptyCart-styles";
 
 const EmptyCart = () => {
   return (

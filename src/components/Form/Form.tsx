@@ -25,7 +25,7 @@ import {
   PaymentFieldset,
   CashOnDelivery,
   Desc
-} from "./form-styles.ts";
+} from "./form-styles";
 
 
 
