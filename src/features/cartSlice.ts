@@ -10,7 +10,7 @@ type cardProductType = {
 
 let cart: cardProductType[] = JSON.parse(localStorage.getItem("cart") || "[]")
 
-let calcTotal = (arr: cardProductType) => arr.reduce(
+let calcTotal = (arr: cardProductType[]) => arr.reduce(
     (accumulator, currentValue) =>
       accumulator + currentValue.price * currentValue.quantity,
     0,
