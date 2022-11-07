@@ -8,7 +8,7 @@ export const Container = styled.div`
   gap: 3rem;
 `
 
-export const ButtonLink = styled(Link)`
+export const Button = styled.button`
   ${OrangeButton}
 `
 

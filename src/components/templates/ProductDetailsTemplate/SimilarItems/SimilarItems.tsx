@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProductImage } from 'components/shared'
-import { Container, ButtonLink, Title, Name, Wrapper, ProductWrapper } from "./similarItems-styles"
-
+import { Container, Button, Title, Name, Wrapper, ProductWrapper } from "./similarItems-styles"
+import { useNavigator } from "react-router-dom"
 
 interface ProductType {
   slug: string;
@@ -18,6 +18,7 @@ interface PropTypes {
 }
 
 const SimilarItems = ({ others }: PropTypes) => {
+  const navigate = usenavigate()
   return (
     <Container>
       <Title>YOU MAY ALSO LIKE</Title>
@@ -26,7 +27,7 @@ const SimilarItems = ({ others }: PropTypes) => {
         <ProductWrapper>
           <ProductImage width="90%" height="100%" name={product.name} image={product.image} />
           <Name>{product.name}</Name>
-          <ButtonLink to={`../${product.slug}`}>SEE PRODUCT</ButtonLink>
+          <Button onClick={() => navigate(-1) && navigate(`/${product.slug}`)}>SEE PRODUCT</Button>
         </ProductWrapper>
       ))}
       </Wrapper>
