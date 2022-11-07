@@ -166,8 +166,10 @@ const Cart = () => {
           </RemoveAllButton>
         </CartHeader>
         <ItemsContainer>
-          {cart.map((item, index) => (
+          <AnimatePresence mode="wait">
+                      {cart.map((item, index) => (
             <ItemContainer
+              key={cart.length}
               initial={{ scale: 0.8, opacity: 0, x: '-100px' }}
               animate={{
                 scale: 1,
@@ -190,6 +192,7 @@ const Cart = () => {
               />
             </ItemContainer>
           ))}
+          </AnimatePresence>
         </ItemsContainer>
         <CartTotal>
           <TotalText>TOTAL</TotalText>
