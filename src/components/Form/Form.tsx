@@ -1,149 +1,50 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import React, { useState } from 'react'
+import { AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+
+import { CashDelivIcon } from "assets/icons";
+import RadioButton from "./RadioButton";
+import { defaultValues } from "./defaultValues";
+import { openModal } from "features/modalSlice";
+import { slide_animation } from "global/animation";
+import { useAppDispatch } from "app/hooks";
+import { useForm } from "react-hook-form";
 import {
-  TextField,
-  headingTwoFontStyle,
-  primaryFontStyle,
-} from 'utilities/defaultStyles'
+  Wrapper,
+  StyledForm,
+  Title,
+  BillingDetails,
+  ShippingInfo,
+  PaymentDetails,
+  Label,
+  ErrorMessage,
+  LabelWrapper,
+  Input,
+  InputContainer,
+  FieldsetTitle,
+  AddressInputContainer,
+  PaymentFieldset,
+  CashOnDelivery,
+  Desc
+} from "./form-styles.ts";
 
-import { CashDelivIcon } from 'assets/icons'
-import RadioButton from './RadioButton'
-import { defaultValues } from './defaultValues'
-import { openModal } from 'features/modalSlice'
-import { slide_animation } from 'global/animation'
-import styled from 'styled-components'
-import { useAppDispatch } from 'app/hooks'
-import { useForm } from 'react-hook-form'
 
-const Wrapper = styled.div`
-  background: #ffffff;
-  border-radius: 8px;
-  min-height: 1126px;
-  padding: 56px 48px;
-  display: flex;
-  flex-flow: column;
-  gap: 56px;
-
-  &,
-  form {
-    display: flex;
-    flex-flow: column;
-    gap: 56px;
-  }
-`
-
-const StyledForm = styled.form`
-  height: 100%;
-  width: 100%;
-`
-
-const Title = styled.h2`
-  ${headingTwoFontStyle}
-`
-
-const BillingDetails = styled.fieldset`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  border: none;
-
-  @media (max-width: 732px) {
-    grid-template-columns: 1fr;
-  }
-`
-
-const ShippingInfo = styled(BillingDetails)``
-
-const PaymentDetails = styled(BillingDetails)``
-
-const Label = styled.label`
-  ${primaryFontStyle}
-
-  &.error {
-    color: #cd2c2c;
-  }
-`
-
-const ErrorMessage = styled.p`
-  ${primaryFontStyle}
-  color: #cd2c2c;
-`
-
-const LabelWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`
-
-const Input = styled.input`
-  ${TextField}
-  width: 100%;
-`
-
-const InputContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  gap: 1rem;
-`
-
-const FieldsetTitle = styled.p`
-  ${primaryFontStyle}
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.928571px;
-  text-transform: uppercase;
-  color: #d87d4a;
-  justify-self: start;
-  grid-column: 1/-1;
-`
-
-const AddressInputContainer = styled(InputContainer)`
-  grid-column: 1/-1;
-  grid-row: 2;
-`
-
-const PaymentFieldset = styled(motion(BillingDetails))`
-  width: 100%;
-  grid-column: 1/-1;
-  height: max-content;
-`
-
-const CashOnDelivery = styled(motion.div)`
-  width: 100%;
-  grid-column: 1/-1;
-  height: max-content;
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  gap: 1rem;
-  align-items: center;
-
-  svg {
-  }
-`
-
-const Desc = styled.p`
-  ${primaryFontStyle}
-  opacity: 0.5;
-  width: 100%;
-`
 
 const Form = () => {
-  const dispatch = useAppDispatch()
-  const [radio, setRadio] = useState('e-money')
-  const methods = useForm({ mode: 'onChange', defaultValues })
+  const dispatch = useAppDispatch();
+  const [radio, setRadio] = useState("e-money");
+  const methods = useForm({ mode: "onChange", defaultValues });
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = methods
+  } = methods;
 
   const onSubmit = (data: any, e: any) => {
-    e.preventDefault()
-    dispatch(openModal({ type: "form" }))
-    reset()
-  }
+    e.preventDefault();
+    dispatch(openModal({ type: "form" }));
+    reset();
+  };
 
   return (
     <Wrapper>
@@ -153,29 +54,29 @@ const Form = () => {
           <FieldsetTitle>BILLING DETAILS</FieldsetTitle>
           <InputContainer>
             <LabelWrapper>
-              <Label className={errors.name && 'error'}>Name</Label>
+              <Label className={errors.name && "error"}>Name</Label>
               {errors.name && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
             </LabelWrapper>
             <Input
-              className={errors.name && 'error'}
-              {...register('name', { required: true })}
+              className={errors.name && "error"}
+              {...register("name", { required: true })}
             />
           </InputContainer>
 
           <InputContainer>
             <LabelWrapper>
-              <Label className={errors.email && 'error'}>Email Address</Label>
-              {errors.email?.type === 'pattern' ? (
+              <Label className={errors.email && "error"}>Email Address</Label>
+              {errors.email?.type === "pattern" ? (
                 <ErrorMessage>Email is invalid</ErrorMessage>
               ) : errors.email ? (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               ) : null}
             </LabelWrapper>
             <Input
-              className={errors.email && 'error'}
-              {...register('email', {
+              className={errors.email && "error"}
+              {...register("email", {
                 required: true,
                 pattern: /^\S+@\S+\.\S+$/,
               })}
@@ -183,14 +84,14 @@ const Form = () => {
           </InputContainer>
           <InputContainer>
             <LabelWrapper>
-              <Label className={errors.number && 'error'}>Phone Number</Label>
+              <Label className={errors.number && "error"}>Phone Number</Label>
               {errors.number && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
             </LabelWrapper>
             <Input
-              className={errors.number && 'error'}
-              {...register('number', { required: true })}
+              className={errors.number && "error"}
+              {...register("number", { required: true })}
             />
           </InputContainer>
         </BillingDetails>
@@ -198,50 +99,50 @@ const Form = () => {
           <FieldsetTitle>SHIPPING INFO</FieldsetTitle>
           <AddressInputContainer>
             <LabelWrapper>
-              <Label className={errors.address && 'error'}>Your Address</Label>
+              <Label className={errors.address && "error"}>Your Address</Label>
               {errors.address && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
             </LabelWrapper>
             <Input
-              className={errors.address && 'error'}
-              {...register('address', { required: true })}
+              className={errors.address && "error"}
+              {...register("address", { required: true })}
             />
           </AddressInputContainer>
           <InputContainer>
             <LabelWrapper>
-              <Label className={errors.zip_code && 'error'}>ZIP Code</Label>
+              <Label className={errors.zip_code && "error"}>ZIP Code</Label>
               {errors.zip_code && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
             </LabelWrapper>
             <Input
-              className={errors.zip_code && 'error'}
-              {...register('zip_code', { required: true })}
+              className={errors.zip_code && "error"}
+              {...register("zip_code", { required: true })}
             />
           </InputContainer>
           <InputContainer>
             <LabelWrapper>
-              <Label className={errors.city && 'error'}>City</Label>
+              <Label className={errors.city && "error"}>City</Label>
               {errors.city && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
             </LabelWrapper>
             <Input
-              className={errors.city && 'error'}
-              {...register('city', { required: true })}
+              className={errors.city && "error"}
+              {...register("city", { required: true })}
             />
           </InputContainer>
           <InputContainer>
             <LabelWrapper>
-              <Label className={errors.country && 'error'}>Country</Label>
+              <Label className={errors.country && "error"}>Country</Label>
               {errors.country && (
                 <ErrorMessage>Field cannot be empty</ErrorMessage>
               )}
             </LabelWrapper>
             <Input
-              className={errors.country && 'error'}
-              {...register('country', { required: true })}
+              className={errors.country && "error"}
+              {...register("country", { required: true })}
             />
           </InputContainer>
         </ShippingInfo>
@@ -250,7 +151,7 @@ const Form = () => {
           <Label>Payment Method</Label>
           <RadioButton value={radio} setValue={setRadio} />
           <AnimatePresence>
-            {radio === 'e-money' ? (
+            {radio === "e-money" ? (
               <PaymentFieldset
                 variants={slide_animation}
                 initial="hidden"
@@ -259,7 +160,7 @@ const Form = () => {
               >
                 <InputContainer>
                   <LabelWrapper>
-                    <Label className={errors.e_money_number && 'error'}>
+                    <Label className={errors.e_money_number && "error"}>
                       e-Money Number
                     </Label>
                     {errors.e_money_number && (
@@ -267,14 +168,14 @@ const Form = () => {
                     )}
                   </LabelWrapper>
                   <Input
-                    className={errors.e_money_number && 'error'}
-                    {...register('e_money_number', { required: true })}
+                    className={errors.e_money_number && "error"}
+                    {...register("e_money_number", { required: true })}
                   />
                 </InputContainer>
 
                 <InputContainer>
                   <LabelWrapper>
-                    <Label className={errors.e_money_pin && 'error'}>
+                    <Label className={errors.e_money_pin && "error"}>
                       e-Money PIN
                     </Label>
                     {errors.e_money_pin && (
@@ -282,8 +183,8 @@ const Form = () => {
                     )}
                   </LabelWrapper>
                   <Input
-                    className={errors.e_money_pin && 'error'}
-                    {...register('e_money_pin', { required: true })}
+                    className={errors.e_money_pin && "error"}
+                    {...register("e_money_pin", { required: true })}
                   />
                 </InputContainer>
               </PaymentFieldset>
@@ -307,7 +208,7 @@ const Form = () => {
         </PaymentDetails>
       </StyledForm>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;

@@ -12,7 +12,6 @@ import { useAppDispatch, useAppSelector } from "app/hooks";
 import { useEffect, useState } from "react";
 
 import { AnimatePresence } from "framer-motion";
-import { Icon } from "components/Modals/Cart/EmptyCart";
 import { Link } from "react-router-dom";
 import { nav_drop_down } from "global/animation";
 import { openModal } from "features/modalSlice";
