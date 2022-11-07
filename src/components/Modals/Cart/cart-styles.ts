@@ -4,9 +4,9 @@ import {
     headingFourFontStyle,
     primaryFontStyle,
   } from 'utilities/defaultStyles'
-  
   import { Link } from 'react-router-dom'
   import styled from 'styled-components'
+  import { motion } from "framer-motion"
   
   export const Container = styled(motion.div)`
     position: absolute;
