@@ -10,7 +10,7 @@ type cardProductType = {
 
 let cart: cardProductType[] = JSON.parse(localStorage.getItem("cart") || "[]")
 
-let total = cart.reduce(
+let calcTotal = (arr: cardProductType) => arr.reduce(
     (accumulator, currentValue) =>
       accumulator + currentValue.price * currentValue.quantity,
     0,
@@ -20,7 +20,7 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cart,
-        total
+        total: calcTotal(cart)
     },
 
     reducers: {
@@ -47,6 +47,8 @@ const cartSlice = createSlice({
             } else {
                 cart.push({ price, slug, id, quantity: amount })
             }
+            
+            state.total = calcTotal(state.cart)
         },
 
 
@@ -59,12 +61,14 @@ const cartSlice = createSlice({
 
             // delete the product from the cart using its index
             cart.splice(productIndex, 1)
+            state.total = calcTotal(state.cart)
         },
 
 
         removeAll: (state) => {
             // Deletes everything
             state.cart = []
+            state.total = 0
         },
 
         // increments the quantity of the product
@@ -81,6 +85,7 @@ const cartSlice = createSlice({
                 // hasnt reached limit then add 1
                 cart[productIndex].quantity += 1
             }
+            state.total = calcTotal(state.cart)
         },
 
         // decrements the quantity of the product
@@ -103,6 +108,7 @@ const cartSlice = createSlice({
                 // otherwise decrement the quantity
                 cart[productIndex].quantity -= 1
             }
+            state.total = calcTotal(state.cart)
         }
     }
 })
