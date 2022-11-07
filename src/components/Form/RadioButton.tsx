@@ -8,13 +8,13 @@ interface PropTypes {
   value: string
 }
 
-import { Wrapper, StyledRadioButton, Circle, FilledCircle, Text } from "./form-styles.ts"
+import { RadioWrapper, StyledRadioButton, Circle, FilledCircle, Text } from "./form-styles.ts"
 
 
 
 const RadioButton = ({ setValue, value }: PropTypes) => {
   return (
-    <Wrapper>
+    <RadioWrapper>
       <StyledRadioButton type="button" onClick={() => setValue('e-money')}>
         <Circle>
           <FilledCircle className={value === 'e-money' ? 'fill' : 'unfill'} />
@@ -29,7 +29,7 @@ const RadioButton = ({ setValue, value }: PropTypes) => {
         </Circle>
         <Text>Cash on Delivery</Text>
       </StyledRadioButton>
-    </Wrapper>
+    </RadioWrapper>
   )
 }
 

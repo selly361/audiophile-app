@@ -124,13 +124,13 @@ export const Desc = styled.p`
 
 // radio button styles
 
-const Wrapper = styled.div`
+export const RadioWrapper = styled.div`
   display: grid;
   width: 100%;
   gap: 1rem;
 `
 
-const StyledRadioButton = styled.button`
+export const StyledRadioButton = styled.button`
   ${RadioInput}
   width: 100%;
   display: flex;
@@ -139,7 +139,7 @@ const StyledRadioButton = styled.button`
   padding-left: 1rem;
 `
 
-const Circle = styled.div`
+export const Circle = styled.div`
   border: 1px solid #cfcfcf;
   background-color: transparent;
   height: 20px;
@@ -149,7 +149,7 @@ const Circle = styled.div`
   place-items: center;
 `
 
-const FilledCircle = styled.div`
+export const FilledCircle = styled.div`
   background: #d87d4a;
   height: 10px;
   width: 10px;
@@ -166,7 +166,7 @@ const FilledCircle = styled.div`
   }
 `
 
-const Text = styled.h5`
+export const Text = styled.h5`
   ${primaryFontStyle}
   font-weight: 700;
   font-size: 14px;
